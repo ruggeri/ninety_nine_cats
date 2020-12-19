@@ -129,6 +129,47 @@ class Toy(models.Model):
   name = models.CharField(max_length=255)
 ```
 
+To generate migrations, we must first list the `cats` app as amongst the
+`INSTALLED_APPS` in `ninety_nine_cats/settings.py`:
+
+```python
+INSTALLED_APPS = [
+    'cats.apps.CatsConfig',
+    '...'
+]
+```
+
+And let's make the migrations:
+
+```
+>> ./manage.py makemigrations
+Migrations for 'cats':
+  cats/migrations/0001_initial.py
+    - Create model Cat
+    - Create model Toy
+```
+
+We can examine these; they're a lot like migrations written in
+JavaScript style ORMs. We can run the migration with:
+
+```
+>> ./manage.py sqlmigrate cats 0001
+...will print out the sql it would run, for you to examine and learn from...
+>> ./manage.py migrate cats
+```
+
+We'll now setup the iPython REPL:
+
+```
+pip install django-extensions
+pip install ipython
+pip freeze > requirements.txt
+# ADD 'django_extensions' to INSTALLED_APPS in settings.py.
+./manage.py shell_plus --ipython
+```
+
+The glory of this is that it will autoload your models!
+
 ## TODO
 
 * How to setup Postgres?
