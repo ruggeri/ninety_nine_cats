@@ -85,3 +85,53 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 ```
+
+## Database Setup
+
+In `ninety_nine_cats/settings.py` there is some database configuration:
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+```
+
+We won't go deeper into setting up Postgres right away. But you can see
+it is here. We will run the default generated migration files (for admin
+console, et cetera):
+
+```
+./manage.py migrate
+```
+
+Now you can run `sqlite3 db.sqlite3` and run `.schema --indent` to see
+the default created schema.
+
+Let's make our first models in `cats/models.py`:
+
+```python
+from django.db import models
+
+# Each subclass of models.Model represents a model
+class Cat(models.Model):
+  # The fields are described as class properties. Every field has their
+  # own options, which we will review some future time.
+  name = models.CharField(max_length=255)
+  age = models.IntegerField()
+
+class Toy(models.Model):
+  # Foreign key is going to create a property `cat` which fetches the
+  # associated object. I believe it will also create a `toys` field.
+  cat = models.ForeignKey(Cat, on_delete=models.CASCADE)
+  name = models.CharField(max_length=255)
+```
+
+## TODO
+
+* How to setup Postgres?
+* Django Rest Framework.
+* Various attributes of model properties.
+* How associations are done.
