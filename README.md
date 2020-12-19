@@ -166,6 +166,8 @@ pip install ipython
 pip freeze > requirements.txt
 # ADD 'django_extensions' to INSTALLED_APPS in settings.py.
 ./manage.py shell_plus --ipython
+# And SHELL_PLUS = "ipython" to settings.py. Makes iPython the default.
+./manage.py shell_plus
 ```
 
 The glory of this is that it will autoload your models!
