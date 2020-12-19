@@ -1,0 +1,14 @@
+{
+  "python.pythonPath": "/Users/ruggeri/.pyenv/versions/my_cool_django_project/bin/python",
+  "python.linting.pylintArgs": [
+    "--load-plugins",
+    "pylint_django",
+    // missing-module-docstring (C0114),
+    // missing-class-docstring (C0115),
+    // missing-function-docstring (C0116),
+    // bad-indentation (W0311),
+    // bad-continuation (C0330),
+    // too-few-public-methods (R0903),
+    "--disable=C0114,C0115,C0116,W0311,C0330,R0903"
+  ]
+}
