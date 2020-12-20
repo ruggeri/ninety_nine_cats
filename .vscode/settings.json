@@ -10,5 +10,8 @@
     // bad-continuation (C0330),
     // too-few-public-methods (R0903),
     "--disable=C0114,C0115,C0116,W0311,C0330,R0903"
-  ]
+  ],
+  "emmet.includeLanguages": {
+    "django-html": "html"
+  },
 }
