@@ -8,11 +8,11 @@
 * Chaining queries onto QuerySet.
 * Templates
   * Reduce repetition of loading templates and everything.
+* How are form errors handled?
 
 ## Tutorials
 
 * Tutorial Pages
-  * views: https://docs.djangoproject.com/en/3.1/intro/tutorial03/
   * forms: https://docs.djangoproject.com/en/3.1/intro/tutorial04/
   * testing: https://docs.djangoproject.com/en/3.1/intro/tutorial05/
   * static files: https://docs.djangoproject.com/en/3.1/intro/tutorial06/

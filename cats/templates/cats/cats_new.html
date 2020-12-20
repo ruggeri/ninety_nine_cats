@@ -1,0 +1,18 @@
+<h1>Make a new cat</h1>
+
+<form action="{% url "cats:create" %}" method="POST">
+  <!-- The CSRF token input element is embedded here -->
+  {% csrf_token %}
+
+  <label>
+    Name
+    <input type="text" name="name" value="{{ cat.name }}">
+  </label>
+
+  <label>
+    Age
+    <input type="number" name="age" value="{{ cat.age }}">
+  </label>
+
+  <input type="submit" value="Create cat!">
+</form>

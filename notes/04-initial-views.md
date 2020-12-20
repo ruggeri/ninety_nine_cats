@@ -48,7 +48,7 @@ make our template name globally unique by naming it
 
 Here is our `cats/cats_list.html` template:
 
-```html
+```django
 {% if cats %}
 <ul>
   {% for cat in cats %}
@@ -92,7 +92,7 @@ def cats_detail(request, cat_id: int):
 
 Here is our Django template for the detail template:
 
-```
+```django
 <h1>{{cat.name}}</h1>
 
 {% if toys %}
@@ -139,7 +139,7 @@ def cats_detail(request, cat_id: int):
 Because we named our URL routes, we can use a helper in the Django
 templates:
 
-```
+```django
 <a href="{% url "list" %}">Back to cats list</a>
 
 <a href="{% url "detail" cat.id %}">{{cat.name}}</a>
@@ -152,7 +152,7 @@ They immediately address the problem of namespacing. It's simple:
 app_name = 'cats'
 ```
 
-```
+```django
 <a href="{% url "cats:list" %}">Back to cats list</a>
 
 <a href="{% url "cats:detail" cat.id %}">{{cat.name}}</a>
