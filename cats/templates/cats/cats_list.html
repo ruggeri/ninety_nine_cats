@@ -2,7 +2,7 @@
 <ul>
   {% for cat in cats %}
   <li>
-    <a href="/cats/{{cat.id}}">{{cat.name}}</a>
+    <a href="{% url "cats:detail" cat.id %}">{{cat.name}}</a>
   </li>
   {% endfor %}
 </ul>
