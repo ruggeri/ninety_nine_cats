@@ -1,6 +1,10 @@
+## Testing
+
+Here is a first test that ensures a `Cat` is given a name:
+
+```python
 from django.core.exceptions import ValidationError
 from django.test import TestCase
-from django.urls import reverse
 from .models import Cat
 
 class CatModelTests(TestCase):
@@ -15,18 +19,21 @@ class CatModelTests(TestCase):
     err: ValidationError = context_manager.exception
     err = err.error_dict['name'][0]
     self.assertEqual(err.message, "This field cannot be blank.")
+```
 
-  def test_cat_must_have_age(self):
-    cat = Cat()
-    cat.name = "Markov"
+We may execute the test with:
 
-    with self.assertRaises(ValidationError) as context_manager:
-      cat.full_clean()
+```
+./manage.py test cats
+```
 
-    err: ValidationError = context_manager.exception
-    err = err.error_dict['age'][0]
-    self.assertEqual(err.message, "This field cannot be null.")
+**TODO**: How to run a single test.
 
+## View Testing
+
+Here we see how to do some basic view testing.
+
+```python
 class CatsListViewTests(TestCase):
   def test_cats_are_listed(self):
     cat = Cat(name="Markov", age=123)
@@ -48,3 +55,4 @@ class CatsListViewTests(TestCase):
     self.assertQuerysetEqual(
         response.context['cats'], ["<Cat: Gizmo>", "<Cat: Markov>"]
     )
+```

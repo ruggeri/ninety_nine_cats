@@ -15,7 +15,6 @@
 ## Tutorials
 
 * Tutorial Pages
-  * testing: https://docs.djangoproject.com/en/3.1/intro/tutorial05/
   * static files: https://docs.djangoproject.com/en/3.1/intro/tutorial06/
   * admin forms: https://docs.djangoproject.com/en/3.1/intro/tutorial07/
 * More documentation:
