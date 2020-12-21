@@ -1,8 +1,8 @@
 <h1>{{cat.name}}</h1>
 
-{% if toys %}
+{% if cat.toy_set.all %}
 <ul>
-  {% for toy in toys %}
+  {% for toy in cat.toy_set.all %}
   <li>{{toy.name}}</li>
   {% endfor %}
 </ul>

@@ -9,11 +9,12 @@
 * Templates
   * Reduce repetition of loading templates and everything.
 * How are form errors handled?
+* Generic views: how are new or create views handled. That wasn't
+  explained.
 
 ## Tutorials
 
 * Tutorial Pages
-  * forms: https://docs.djangoproject.com/en/3.1/intro/tutorial04/
   * testing: https://docs.djangoproject.com/en/3.1/intro/tutorial05/
   * static files: https://docs.djangoproject.com/en/3.1/intro/tutorial06/
   * admin forms: https://docs.djangoproject.com/en/3.1/intro/tutorial07/

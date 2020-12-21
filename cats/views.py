@@ -1,21 +1,24 @@
-from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.http import HttpRequest, HttpResponseRedirect
+from django.shortcuts import render
 from django.urls import reverse
+from django.views import generic
 from .models import Cat
 
-def cats_list(request):
-  # Fetching models
-  cats = Cat.objects.all()
-  # The template context
-  context = {'cats': cats}
-  # Rendering!
-  return render(request, 'cats/cats_list.html', context)
+class CatsListView(generic.ListView):
+  template_name = 'cats/cats_list.html'
+  # specify what the object list should be called.
+  context_object_name = 'cats'
 
-# The URL parameter gets passed in keyword-style.
-def cats_detail(request, cat_id: int):
-  cat = get_object_or_404(Cat, id=cat_id)
-  context = {'cat': cat, 'toys': list(cat.toy_set.all())}
-  return render(request, 'cats/cats_detail.html', context)
+  # Override how objects are queried for the list.
+  def get_queryset(self):
+    return Cat.objects.order_by('name').all()
+
+class CatsDetailView(generic.DetailView):
+  # Will auto infer that context_object_name='cat'
+  model = Cat
+  # URLConf wants to pass in arg as cat_id.
+  pk_url_kwarg = 'cat_id'
+  template_name = 'cats/cats_detail.html'
 
 def cats_new(request):
   cat = Cat()
