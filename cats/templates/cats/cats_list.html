@@ -1,3 +1,9 @@
+{% load static %}
+
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static '/cats/style.css' %}">
+</head>
+
 {% if cats %}
 <ul>
   {% for cat in cats %}

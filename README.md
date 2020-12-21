@@ -15,8 +15,9 @@
 ## Tutorials
 
 * Tutorial Pages
-  * static files: https://docs.djangoproject.com/en/3.1/intro/tutorial06/
   * admin forms: https://docs.djangoproject.com/en/3.1/intro/tutorial07/
 * More documentation:
   * https://docs.djangoproject.com/en/3.1/
+    * Topic guides: https://docs.djangoproject.com/en/3.1/topics/
+    * How to guides: https://docs.djangoproject.com/en/3.1/howto/
   * TODO: review to see what additional doc pages are useful.
