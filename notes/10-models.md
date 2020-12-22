@@ -106,11 +106,78 @@ Oh yeah, `db_name` can be set to control the foreign key field name. In
 the `Toy` example, this is `cat_id`. You can say `Toy#cat_id`, and
 get/set this explicitly.
 
+Also: a DB index will be generated for you.
+
 Note: as far as I can tell, when you first call `Toy#cat`, it will
 trigger the query. But any subsequent calls to `#cat` will use the
 cached value.
 
+## ManyToManyField
+
+You set this to do a many-to-many relationship with a join table
+auto-generated. I added one like this:
+
+```python
+class Human(models.Model):
+  cats = models.ManyToManyField(Cat)
+```
+
+**SQL and Indices**
+
+Check this dope SQL:
+
+```sql
+CREATE TABLE IF NOT EXISTS "cats_human_cats"(
+  "id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+  "human_id" integer NOT NULL REFERENCES "cats_human"("id") DEFERRABLE INITIALLY DEFERRED,
+  "cat_id" integer NOT NULL REFERENCES "cats_cat"("id") DEFERRABLE INITIALLY DEFERRED
+);
+CREATE UNIQUE INDEX "cats_human_cats_human_id_cat_id_cfdb6b42_uniq" ON "cats_human_cats"(
+  "human_id",
+  "cat_id"
+);
+CREATE INDEX "cats_human_cats_human_id_c3a26c3d" ON "cats_human_cats"(
+  "human_id"
+);
+CREATE INDEX "cats_human_cats_cat_id_873952ed" ON "cats_human_cats"("cat_id");
+```
+
+So we get some good indices. We don't exactly need `id`, but that's
+fine.
+
+**Association Methods**
+
+By defining the `ManyToManyField`, we can write `cat.human_set.all()`
+and `human.cats.all()`. This is unpleasantly asymmetric, but perhaps
+similar to the situation with `ForeignKey`.
+
+But that's BS. Notice this asymmetry:
+
+```python
+# Nice
+Cat.objects.filter(human__name="Ned")
+# Meh
+cat.human_set
+# Gross
+Human.objects.filter(cats__name="Markov")
+# Nice
+human.cats
+```
+
+I'm not actually what the best way to deal with this asymmetry. I think
+maybe one should by default always set `related_name='humans'` for both
+`ForeignKeyField` and `ManyToManyField`. This would mean that you always
+symmetrically refer to the associated many objects with a plural, both
+for the association method `cat.humans` and for the query
+`cat.filter(human__name="Ned")`.
+
+**
+
+**TODO**: There's some explanation of how to custom configure a has many
+through relationship.
+
 ### TODO
+
 
 * https://docs.djangoproject.com/en/3.1/topics/db/queries/
 * https://docs.djangoproject.com/en/3.1/topics/db/aggregation/
