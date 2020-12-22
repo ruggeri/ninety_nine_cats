@@ -57,6 +57,7 @@ class Cat(models.Model):
   primary key. Otherwise it will make its own pk field called `id`.
 * The `default` option can be either a value, or a callable.
 * `unique=True` will enforce uniqueness of this field.
+* You can name the column with `db_column`.
 * `help_text` will control what help text appears in a form widget.
 
 ### Many-To-One Relationships
@@ -324,8 +325,6 @@ Not that exciting.
 * https://docs.djangoproject.com/en/3.1/topics/db/instrumentation/
 * https://docs.djangoproject.com/en/3.1/topics/db/examples/
 
-* https://docs.djangoproject.com/en/3.1/ref/models/fields/
-* https://docs.djangoproject.com/en/3.1/ref/models/fields/#field-attribute-reference
 * https://docs.djangoproject.com/en/3.1/ref/models/indexes/
 * https://docs.djangoproject.com/en/3.1/ref/models/constraints/
 * https://docs.djangoproject.com/en/3.1/ref/models/meta/

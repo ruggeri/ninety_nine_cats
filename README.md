@@ -11,6 +11,7 @@
 * How are form errors handled?
 * Generic views: how are new or create views handled. That wasn't
   explained.
+* Must learn about validators!
 
 ## Tutorials and More Documentation
 
