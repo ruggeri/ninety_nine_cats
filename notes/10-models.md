@@ -278,6 +278,38 @@ can *downcast* from `Place` to `Restaurant` by writing
 `myPlace.restaurant`. This gives an error if `myPlace` is not, in fact,
 a `Restaurant`.
 
+Wow. You can even do *multiple* inheritance! To do it, the parents have
+to explicitly define primary keys. Here's an example:
+
+```python
+class Article(models.Model):
+    article_id = models.AutoField(primary_key=True)
+    ...
+
+class Book(models.Model):
+    book_id = models.AutoField(primary_key=True)
+    ...
+
+class BookReview(Book, Article):
+    pass
+```
+
+## Proxy Models
+
+A weird feature. Kind of like ActiveRecord scopes. An example:
+
+```python
+class OrderedPerson(Person):
+    class Meta:
+        ordering = ["last_name"]
+        proxy = True
+```
+
+Now, if you say `OrderedPerson.objects.all()`, it will be ordered for
+you, whereas `Person` will not be.
+
+Not that exciting.
+
 ### TODO
 
 I've worked up to
