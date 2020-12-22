@@ -8,7 +8,11 @@ class Cat(models.Model):
     return self.name
 
 class Toy(models.Model):
-  cat = models.ForeignKey(Cat, on_delete=models.CASCADE)
+  cat = models.ForeignKey(
+      Cat,
+      on_delete=models.CASCADE,
+      related_name="toys",
+  )
   name = models.CharField(max_length=255)
 
   def __str__(self):

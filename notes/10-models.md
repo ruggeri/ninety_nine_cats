@@ -102,8 +102,8 @@ key of the parent. But you can override with `to_field='email_address'`
 or whatever. But you better have a `unique=True` constraint on that
 field!
 
-Oh yeah, `db_name` can be set to control the foreign key field name. In
-the `Toy` example, this is `cat_id`. You can say `Toy#cat_id`, and
+Oh yeah, `db_column` can be set to control the foreign key field name.
+In the `Toy` example, this is `cat_id`. You can say `Toy#cat_id`, and
 get/set this explicitly.
 
 Also: a DB index will be generated for you.
@@ -169,7 +169,7 @@ maybe one should by default always set `related_name='humans'` for both
 `ForeignKeyField` and `ManyToManyField`. This would mean that you always
 symmetrically refer to the associated many objects with a plural, both
 for the association method `cat.humans` and for the query
-`cat.filter(human__name="Ned")`.
+`cat.filter(humans__name="Ned")`.
 
 To be clear: it doesn't otherwise matter what side of the relationship
 you put the `ManyToManyField`.
@@ -216,7 +216,27 @@ return `None`/the child instance, rather than a query set.
 They point out that this is most useful when doing some kind of
 multi-table inheritance thingy.
 
+## Other
+
+**Metadata**
+
+You can set metadata with an internal class called `Meta`. For instance:
+
+```python
+class Cat:
+  class Meta:
+    # default ordering
+    ordering = ['age']
+    db_table = "the_cool_cats_table"
+```
+
+You can also add `constraints` (including multi-column constraints), and
+`indices`.
+
 ### TODO
+
+I've worked up to
+https://docs.djangoproject.com/en/3.1/topics/db/models/#model-methods
 
 * https://docs.djangoproject.com/en/3.1/topics/db/queries/
 * https://docs.djangoproject.com/en/3.1/topics/db/aggregation/
