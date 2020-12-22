@@ -13,3 +13,21 @@ class Toy(models.Model):
 
   def __str__(self):
     return self.name
+
+class Human(models.Model):
+  name = models.CharField(max_length=255)
+  related_cats = models.ManyToManyField(
+      'Cat',
+      through='CatHumanRelationship',
+      related_name='related_humans'
+  )
+
+class CatHumanRelationship(models.Model):
+  cat = models.ForeignKey(
+      Cat, on_delete=models.CASCADE, related_name="relationships"
+  )
+  human = models.ForeignKey(
+      Human, on_delete=models.CASCADE, related_name="relationships"
+  )
+  # Number of years of duration of relationship
+  duration = models.IntegerField(default=0)

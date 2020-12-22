@@ -171,13 +171,52 @@ symmetrically refer to the associated many objects with a plural, both
 for the association method `cat.humans` and for the query
 `cat.filter(human__name="Ned")`.
 
-**
+To be clear: it doesn't otherwise matter what side of the relationship
+you put the `ManyToManyField`.
 
-**TODO**: There's some explanation of how to custom configure a has many
-through relationship.
+**Custom Through Tables**
+
+Sometimes a join table should have extra fields. Let's consider if
+`Human` and `Cat` are related by `CatHumanRelationship`. Let's define:
+
+```python
+class Human(models.Model):
+  name = models.CharField(max_length=255)
+
+class CatHumanRelationship(models.Model):
+  cat = models.ForeignKey(
+      Cat, on_delete=models.CASCADE, related_name="relationships"
+  )
+  human = models.ForeignKey(
+      Human, on_delete=models.CASCADE, related_name="relationships"
+  )
+  # Number of years of duration of relationship
+  duration = models.IntegerField(default=0)
+```
+
+You can now specify the many-to-many relationship between Human and Cat
+this way:
+
+```python
+class Human(models.Model):
+  name = models.CharField(max_length=255)
+  related_cats = models.ManyToManyField(
+      'Cat',
+      through='CatHumanRelationship',
+      related_name='related_humans'
+  )
+```
+
+### OneToOneField
+
+Conceptually this is the same as `ForeignKeyField` with `unique=True`.
+But it's a little more convenient because the reverse relationship will
+return `None`/the child instance, rather than a query set.
+
+They point out that this is most useful when doing some kind of
+multi-table inheritance thingy.
 
 ### TODO
-
 
 * https://docs.djangoproject.com/en/3.1/topics/db/queries/
 * https://docs.djangoproject.com/en/3.1/topics/db/aggregation/
