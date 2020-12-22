@@ -21,6 +21,7 @@
 * All Topic guides: https://docs.djangoproject.com/en/3.1/topics/
 * How to install Django https://docs.djangoproject.com/en/3.1/topics/install/
 * Models and Databases https://docs.djangoproject.com/en/3.1/topics/db/
+  * Working on this now!
 * Handling HTTP Requests https://docs.djangoproject.com/en/3.1/topics/http/
 * Working with forms https://docs.djangoproject.com/en/3.1/topics/forms/
 * Templates https://docs.djangoproject.com/en/3.1/topics/templates/
