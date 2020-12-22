@@ -312,9 +312,6 @@ Not that exciting.
 
 ### TODO
 
-I've worked up to
-https://docs.djangoproject.com/en/3.1/topics/db/models/#model-methods
-
 * https://docs.djangoproject.com/en/3.1/topics/db/queries/
 * https://docs.djangoproject.com/en/3.1/topics/db/aggregation/
 * https://docs.djangoproject.com/en/3.1/topics/db/search/
@@ -326,3 +323,18 @@ https://docs.djangoproject.com/en/3.1/topics/db/models/#model-methods
 * https://docs.djangoproject.com/en/3.1/topics/db/optimization/
 * https://docs.djangoproject.com/en/3.1/topics/db/instrumentation/
 * https://docs.djangoproject.com/en/3.1/topics/db/examples/
+
+* https://docs.djangoproject.com/en/3.1/ref/models/fields/
+* https://docs.djangoproject.com/en/3.1/ref/models/fields/#field-attribute-reference
+* https://docs.djangoproject.com/en/3.1/ref/models/indexes/
+* https://docs.djangoproject.com/en/3.1/ref/models/constraints/
+* https://docs.djangoproject.com/en/3.1/ref/models/meta/
+* https://docs.djangoproject.com/en/3.1/ref/models/relations/
+* https://docs.djangoproject.com/en/3.1/ref/models/class/
+* https://docs.djangoproject.com/en/3.1/ref/models/options/
+* https://docs.djangoproject.com/en/3.1/ref/models/instances/
+* https://docs.djangoproject.com/en/3.1/ref/models/querysets/
+* https://docs.djangoproject.com/en/3.1/ref/models/lookups/
+* https://docs.djangoproject.com/en/3.1/ref/models/expressions/
+* https://docs.djangoproject.com/en/3.1/ref/models/conditional-expressions/
+* https://docs.djangoproject.com/en/3.1/ref/models/database-functions/
