@@ -233,6 +233,51 @@ class Cat:
 You can also add `constraints` (including multi-column constraints), and
 `indices`.
 
+**Overriding `#save`, `#delete`, et cetera**
+
+You can do a sort of triggery thing when save or delete is called. You
+accomplish this by overriding the functions. Now you can add pre and
+post hooks.
+
+As you may expect, these functions are not called when you do bulk
+creation/deletion. Even trying to tie in with the signals functionality
+won't always work.
+
+Honestly, it seems like a bad idea.
+
+### Abstract Base Class Models
+
+An abstract model type adds functionality, but doesn't actually
+instantiate a table. Here's a good use case (some cribbing from
+django-model-utils 3rd party library):
+
+```python
+from django.utils.timezone import now
+class TimeStampedModel(models.Model):
+  created = models.DateTimeField(editable=False, default=now)
+  # ...
+
+  class Meta:
+    abstract = True
+```
+
+One probably doesn't write that many abstract model classes. But it is
+probably helpful to know about.
+
+## Multi-table Inheritance
+
+This is a pattern where you have a `Place`s table, and also a
+`Restaurant`s table, where a `Restaurant` *is a* `Place`. So you make
+`Restaurant` a subclass of `Place`, and Django will create the
+`OneToOneField` from `Restaurant` to `Place` for you.
+
+When you have a `Restaurant`, it has all the fields of a `Place`. If
+`name` is a property of `Place`, you can write
+`Restaurant.objects.filter(name="Chez Markov")`. On the other hand, you
+can *downcast* from `Place` to `Restaurant` by writing
+`myPlace.restaurant`. This gives an error if `myPlace` is not, in fact,
+a `Restaurant`.
+
 ### TODO
 
 I've worked up to
