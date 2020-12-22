@@ -9,7 +9,7 @@ databases.
 
 You can set `blank=True`. The default is `False`. `True` allows a field
 to be `None` or `""`. A blank field will not trigger a validation
-failure.
+failure when `full_clean` is called.
 
 However, fields are by default `NOT NULL`. To allow `NULL` values, you
 must set `null=True`. `null=True` is thus about the DB serialization,
@@ -25,6 +25,9 @@ Thus:
   `CharField` or `TextField`. But could make sense if a `CharField` has
   a unique constraint.
 * `blank=False, null=True`: doesn't make any sense?
+  * Crazy, but `full_clean` is not called on save?? So save doesn't
+    check a validation. Thus empty (but non-NULL) strings are easily
+    saved to the DB.
 
 **Choices**
 
@@ -57,6 +60,55 @@ class Cat(models.Model):
 * `help_text` will control what help text appears in a form widget.
 
 ### Many-To-One Relationships
+
+You create a field called `ForeignKey`. Here is a basic example:
+
+```python
+class Toy(models.Model):
+  # Adds both a cat_id field and an attribute cat that will fetch the
+  # associated object.
+  cat = models.ForeignKey(Cat, on_delete=models.CASCADE)
+```
+
+You can use just the string `'Cat'`, which would allow you to define
+model classes in any order. It is even possible to define recursive
+relationships with `'self'`. If you want to refer to a model from
+another app, you must say `other_app_name.ModelClassName`.
+
+You must specify `on_delete`. You can set either `CASCADE` (when the
+parent is deleted, all children are), `PROTECT` (the parent cannot be
+deleted if there are still children), `RESTRICT` (some weird variant of
+`PROTECT`), `SET_NULL` (sets the foreign key to NULL), or `SET_DEFAULT`
+(sets the foreign key to the default value). Can even specify
+`SET(callable)`, which will run a function to set the new value.
+
+`limit_choices_to` controls the options that are presented for a form.
+You could specify `limit_choices_to={ 'is_staff': True }` to only let
+someone pick a `User` who is a staff member. Note: I don't think this
+does any kind of validation.
+
+By default, `related_name` is `XXX_set`. So `Cat#toy_set` is the related
+name. You can override this to be `related_name='toys'` which means
+`Cat#toys` is now the relationship back.
+
+`related_name`, if set, will also set `related_query_name`. By default,
+we say: `Cat.objects.filter(toy__name="mousey")` to select those cats
+who have a toy named 'Mousey'. But you can override `related_query_name`
+if desired. For instance, if you changed `related_name="toys"`, then you
+might want to set `related_query_name="toy"`.
+
+You can also specify the key in the parent. This defaults to the primary
+key of the parent. But you can override with `to_field='email_address'`
+or whatever. But you better have a `unique=True` constraint on that
+field!
+
+Oh yeah, `db_name` can be set to control the foreign key field name. In
+the `Toy` example, this is `cat_id`. You can say `Toy#cat_id`, and
+get/set this explicitly.
+
+Note: as far as I can tell, when you first call `Toy#cat`, it will
+trigger the query. But any subsequent calls to `#cat` will use the
+cached value.
 
 ### TODO
 
