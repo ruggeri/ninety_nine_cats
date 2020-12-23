@@ -325,6 +325,8 @@ Not that exciting.
 * https://docs.djangoproject.com/en/3.1/topics/db/examples/
 
 * https://docs.djangoproject.com/en/3.1/ref/models/querysets/
+* https://docs.djangoproject.com/en/3.1/ref/models/instances/
+
 * https://docs.djangoproject.com/en/3.1/ref/models/lookups/
 * https://docs.djangoproject.com/en/3.1/ref/models/relations/
 * https://docs.djangoproject.com/en/3.1/ref/models/indexes/
@@ -332,7 +334,6 @@ Not that exciting.
 * https://docs.djangoproject.com/en/3.1/ref/models/meta/
 * https://docs.djangoproject.com/en/3.1/ref/models/class/
 * https://docs.djangoproject.com/en/3.1/ref/models/options/
-* https://docs.djangoproject.com/en/3.1/ref/models/instances/
 * https://docs.djangoproject.com/en/3.1/ref/models/expressions/
 * https://docs.djangoproject.com/en/3.1/ref/models/conditional-expressions/
 * https://docs.djangoproject.com/en/3.1/ref/models/database-functions/

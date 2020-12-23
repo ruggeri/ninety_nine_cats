@@ -12,6 +12,7 @@
 * Generic views: how are new or create views handled. That wasn't
   explained.
 * Must learn about validators!
+* How are files/images handled?
 
 ## Tutorials and More Documentation
 

@@ -220,3 +220,169 @@ prefetches related objects. You can say
 You can use `add`, `create`, `remove` (for many-to-many or `ForeignKey`
 if `null=True`), `clear` (ditto), `set` on a reverse relation manager
 like `Cat#toys`.
+
+## Other QuerySet Methods
+
+**anotate**
+
+Allows you to add additional fields to pull down. The most common case
+for this is aggregations. For instance:
+`Blog.objects.anotate(number_of_entries=Count('entry'))` will get `Blog`
+items and an entry count.
+
+**order_by**
+
+This is pretty clear. One thing they mention is that
+`Cat.objects.order_by('toys__name')` can return the same cat *multiple
+times*.
+
+```ipython
+In [6]: Cat.objects.order_by('toys__name').all()
+Out[6]: SELECT "cats_cat"."id",
+       "cats_cat"."name",
+       "cats_cat"."age"
+  FROM "cats_cat"
+  LEFT OUTER JOIN "cats_toy"
+    ON ("cats_cat"."id" = "cats_toy"."cat_id")
+ ORDER BY "cats_toy"."name" ASC
+ LIMIT 21
+
+Execution time: 0.000168s [Database: default]
+<QuerySet [<Cat: Markov>, <Cat: Markov>]>
+```
+
+**distinct**
+
+Notice that this problem with duplicate objects applies to any time a
+join might be performed:
+
+```ipython
+In [12]: Cat.objects.filter(toys__name__startswith="")
+Out[12]: SELECT "cats_cat"."id",
+       "cats_cat"."name",
+       "cats_cat"."age"
+  FROM "cats_cat"
+ INNER JOIN "cats_toy"
+    ON ("cats_cat"."id" = "cats_toy"."cat_id")
+ WHERE "cats_toy"."name" LIKE '%' ESCAPE '\'
+ LIMIT 21
+
+Execution time: 0.000181s [Database: default]
+<QuerySet [<Cat: Markov>, <Cat: Markov>]>
+```
+
+But you can fix this by calling `distinct()`:
+
+```ipython
+In [21]: Cat.objects.filter(toys__name__startswith="").distinct()
+Out[21]: SELECT DISTINCT "cats_cat"."id",
+       "cats_cat"."name",
+       "cats_cat"."age"
+  FROM "cats_cat"
+ INNER JOIN "cats_toy"
+    ON ("cats_cat"."id" = "cats_toy"."cat_id")
+ WHERE "cats_toy"."name" LIKE '%' ESCAPE '\'
+ LIMIT 21
+
+Execution time: 0.000213s [Database: default]
+<QuerySet [<Cat: Markov>]>
+```
+
+Watch out for a footgun when using distinct with order_by:
+
+```ipython
+In [22]: Cat.objects.order_by('toys__name').distinct()
+Out[22]: SELECT DISTINCT "cats_cat"."id",
+       "cats_cat"."name",
+       "cats_cat"."age",
+       "cats_toy"."name"
+  FROM "cats_cat"
+  LEFT OUTER JOIN "cats_toy"
+    ON ("cats_cat"."id" = "cats_toy"."cat_id")
+ ORDER BY "cats_toy"."name" ASC
+ LIMIT 21
+
+Execution time: 0.000146s [Database: default]
+<QuerySet [<Cat: Markov>, <Cat: Markov>]>
+```
+
+I think the reason for the problem here is that a DISTINCT is
+effectively a GROUP BY. And GROUP BY gets done before ORDER BY.
+
+**values**
+
+This lets you select just those fields you desire:
+
+```ipython
+In [24]: Cat.objects.values('id', 'name')
+Out[24]: SELECT "cats_cat"."id",
+       "cats_cat"."name"
+  FROM "cats_cat"
+ LIMIT 21
+
+Execution time: 0.000198s [Database: default]
+<QuerySet [{'id': 1, 'name': 'Markov'}]>
+```
+
+You get the expected explosion when you JOIN other tables:
+
+```ipython
+In [25]: Cat.objects.values('id', 'name', 'toys')
+Out[25]: SELECT "cats_cat"."id",
+       "cats_cat"."name",
+       "cats_toy"."id"
+  FROM "cats_cat"
+  LEFT OUTER JOIN "cats_toy"
+    ON ("cats_cat"."id" = "cats_toy"."cat_id")
+ LIMIT 21
+
+Execution time: 0.000158s [Database: default]
+<QuerySet [{'id': 1, 'name': 'Markov', 'toys': 1}, {'id': 1, 'name': 'Markov', 'toys': 2}]>
+```
+
+**select_related/prefetch_related**
+
+We've already covered `select_related`: you give it relations and it
+will do a JOIN and SELECT out both sets of fields. To avoid explosion,
+it only works with `ForeignKeyField`s and `OneToOneField`s.
+
+When you want to go backward through a `ForeignKeyField`, or have a
+`ManyToManyField`, you should use `prefetch_related`. This one does two
+separate queries, and does the stitching together in Python. This way
+the JOIN doesn't explode things.
+
+```ipython
+In [28]: list(Cat.objects.prefetch_related('toys'))
+SELECT "cats_cat"."id",
+       "cats_cat"."name",
+       "cats_cat"."age"
+  FROM "cats_cat"
+
+Execution time: 0.000198s [Database: default]
+SELECT "cats_toy"."id",
+       "cats_toy"."cat_id",
+       "cats_toy"."name"
+  FROM "cats_toy"
+ WHERE "cats_toy"."cat_id" IN (1)
+
+Execution time: 0.000086s [Database: default]
+Out[28]: [<Cat: Markov>]
+```
+
+**defer/only**
+
+Another baroque optimization. You can `defer(field_name)`, and this
+won't be selected. *But* you'll still have an attribute for that field
+that will lazily load it. Maybe useful if you're selecting a large
+number of objects with big text fields, and you just don't want that
+field.
+
+`only(field_name)` is the opposite of `defer`. It says to only eagerly
+load the specified field name.
+
+`only` is a little like `values`, but with the ability to fetch further
+data as needed.
+
+## TODO
+
+I've read up through https://docs.djangoproject.com/en/3.1/ref/models/querysets/#select-for-update
