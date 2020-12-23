@@ -383,6 +383,61 @@ load the specified field name.
 `only` is a little like `values`, but with the ability to fetch further
 data as needed.
 
+**select_for_update**
+
+Basically immediately locks the rows on a MVCC DB.
+
+**get_or_create**
+
+A convenience to get the object with certain properties, or create it.
+But it isn't actually concurrency safe. Multiple objects can get
+created.
+
+**update_or_create**
+
+Ditto.
+
+**bulk_create/bulk_update**
+
+Both methods will not call `#save`, and will not fire signals.
+
+**iterator**
+
+Gives an iterator over the `QuerySet`. But as the `QuerySet` is
+evaluated, the results are not cached. So this is a performance
+enhancement.
+
+They do note that it also matters whether the DB driver can support a
+cursor. The PostgreSQL driver, for instance, will give a cursor that can
+minimize memory from fetching. But I think the MySQL DB does not, and
+thus all results are fetched in one go (but presumably not turned into
+Python objects right away).
+
+**exists**
+
+Does what you think.
+
+**update**
+
+Using this can do a bulk update on all the objects matching a query. But
+it can also avoid a race-condition, as opposed to (1) load, (2) change
+field, (3) save. Sensibly, you can only call `update` on fields stored
+in the object under consideration (rather than related objects).
+
+Of course, does not call save, nor emit signals.
+
+## Field Matchers
+
+**in**
+
+Interesting, but you can pass a `QuerySet` that would produce a list of
+results. This will produce a nested query. This may or may not be well
+optimized for your DB engine.
+
+**regex**
+
+You can match on REGEXP.
+
 ## TODO
 
-I've read up through https://docs.djangoproject.com/en/3.1/ref/models/querysets/#select-for-update
+I've read up through https://docs.djangoproject.com/en/3.1/ref/models/querysets/#aggregation-functions
