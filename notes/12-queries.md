@@ -177,6 +177,46 @@ There are an inordinate and baroque set of ways to query `JSONField`s. I
 won't go into them here: they're mostly intuitive, and I don't use
 `JSONField` that much. I could review later if interested.
 
-## TODO
+## Q Operator
 
-* I've read up to here: https://docs.djangoproject.com/en/3.1/topics/db/queries/#complex-lookups-with-q-objects
+The `django.models.Q` operator lets you build conditions for a `filter`:
+
+```python
+query = Q(toys__name='mousey') | Q(name='Markov')
+cats = list(Cat.objects.filter(query))
+```
+
+You can also use `&` to AND criteria, and you can also use `~` to negate
+a query.
+
+As far as I can see, the primary use of `Q` objects would be for OR
+queries.
+
+## Deletion
+
+They note that you can call `#delete` on either a model instance or a
+`QuerySet`. They note that when called on a `QuerySet`, the `delete`
+method isn't called on each individual item. But I don't think you
+should be overriding a model's `delete` method anyway...
+
+## Bulk Update
+
+A `QuerySet` has a `update` method that will update every element in the
+query set. They explain that you can only update the fields that are
+directly on a model, not any fields in associated columns. That sounds
+reasonable.
+
+Of course, the save method won't be called.
+
+This is a good use case for `F` expressions.
+
+## Relations
+
+They rehash some information about relations. They talk about
+`select_related`, which is like the ActiveRecord `include` option. This
+prefetches related objects. You can say
+`Cat.objects.selected_related('toys')` to get the related `Toy`s.
+
+You can use `add`, `create`, `remove` (for many-to-many or `ForeignKey`
+if `null=True`), `clear` (ditto), `set` on a reverse relation manager
+like `Cat#toys`.
