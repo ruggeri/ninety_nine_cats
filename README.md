@@ -20,6 +20,7 @@
 
 **Model Docs**
 
+* https://docs.djangoproject.com/en/3.1/topics/db/transactions/
 * https://docs.djangoproject.com/en/3.1/topics/db/aggregation/
 * https://docs.djangoproject.com/en/3.1/ref/models/querysets/#aggregation-functions
 * https://docs.djangoproject.com/en/3.1/ref/models/querysets/#query-related-tools
@@ -27,7 +28,6 @@
 * https://docs.djangoproject.com/en/3.1/topics/db/search/
 * https://docs.djangoproject.com/en/3.1/topics/db/managers/
 * https://docs.djangoproject.com/en/3.1/topics/db/sql/
-* https://docs.djangoproject.com/en/3.1/topics/db/transactions/
 * https://docs.djangoproject.com/en/3.1/topics/db/multi-db/
 * https://docs.djangoproject.com/en/3.1/topics/db/tablespaces/
 * https://docs.djangoproject.com/en/3.1/topics/db/optimization/
@@ -80,4 +80,29 @@
 
 **API Reference**
 
-* API Reference: https://docs.djangoproject.com/en/3.1/ref/
+https://docs.djangoproject.com/en/3.1/ref/applications/
+https://docs.djangoproject.com/en/3.1/ref/checks/
+https://docs.djangoproject.com/en/3.1/ref/class-based-views/
+https://docs.djangoproject.com/en/3.1/ref/clickjacking/
+https://docs.djangoproject.com/en/3.1/ref/contrib/
+https://docs.djangoproject.com/en/3.1/ref/csrf/
+https://docs.djangoproject.com/en/3.1/ref/databases/
+https://docs.djangoproject.com/en/3.1/ref/django-admin/
+https://docs.djangoproject.com/en/3.1/ref/exceptions/
+https://docs.djangoproject.com/en/3.1/ref/files/
+https://docs.djangoproject.com/en/3.1/ref/forms/
+https://docs.djangoproject.com/en/3.1/ref/middleware/
+https://docs.djangoproject.com/en/3.1/ref/migration-operations/
+https://docs.djangoproject.com/en/3.1/ref/paginator/
+https://docs.djangoproject.com/en/3.1/ref/request-response/
+https://docs.djangoproject.com/en/3.1/ref/schema-editor/
+https://docs.djangoproject.com/en/3.1/ref/settings/
+https://docs.djangoproject.com/en/3.1/ref/signals/
+https://docs.djangoproject.com/en/3.1/ref/templates/
+https://docs.djangoproject.com/en/3.1/ref/template-response/
+https://docs.djangoproject.com/en/3.1/ref/unicode/
+https://docs.djangoproject.com/en/3.1/ref/urlresolvers/
+https://docs.djangoproject.com/en/3.1/ref/urls/
+https://docs.djangoproject.com/en/3.1/ref/utils/
+https://docs.djangoproject.com/en/3.1/ref/validators/
+https://docs.djangoproject.com/en/3.1/ref/views/
