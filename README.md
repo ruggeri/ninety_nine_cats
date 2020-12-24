@@ -22,6 +22,7 @@
 
 * https://docs.djangoproject.com/en/3.1/topics/db/aggregation/
 * https://docs.djangoproject.com/en/3.1/ref/models/querysets/#aggregation-functions
+* https://docs.djangoproject.com/en/3.1/ref/models/querysets/#query-related-tools
 
 * https://docs.djangoproject.com/en/3.1/topics/db/search/
 * https://docs.djangoproject.com/en/3.1/topics/db/managers/
@@ -33,14 +34,11 @@
 * https://docs.djangoproject.com/en/3.1/topics/db/instrumentation/
 * https://docs.djangoproject.com/en/3.1/topics/db/examples/
 
-* https://docs.djangoproject.com/en/3.1/ref/models/instances/
-
 * https://docs.djangoproject.com/en/3.1/ref/models/lookups/
 * https://docs.djangoproject.com/en/3.1/ref/models/relations/
 * https://docs.djangoproject.com/en/3.1/ref/models/indexes/
 * https://docs.djangoproject.com/en/3.1/ref/models/constraints/
 * https://docs.djangoproject.com/en/3.1/ref/models/meta/
-* https://docs.djangoproject.com/en/3.1/ref/models/class/
 * https://docs.djangoproject.com/en/3.1/ref/models/options/
 * https://docs.djangoproject.com/en/3.1/ref/models/expressions/
 * https://docs.djangoproject.com/en/3.1/ref/models/conditional-expressions/
