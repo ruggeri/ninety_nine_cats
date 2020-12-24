@@ -20,7 +20,10 @@
 
 **Model Docs**
 
-* https://docs.djangoproject.com/en/3.1/topics/db/transactions/
+Top level:
+* https://docs.djangoproject.com/en/3.1/topics/db
+* https://docs.djangoproject.com/en/3.1/ref/models
+
 * https://docs.djangoproject.com/en/3.1/topics/db/aggregation/
 * https://docs.djangoproject.com/en/3.1/ref/models/querysets/#aggregation-functions
 * https://docs.djangoproject.com/en/3.1/ref/models/querysets/#query-related-tools
@@ -48,13 +51,13 @@
 
 * All Topic guides: https://docs.djangoproject.com/en/3.1/topics/
 * How to install Django https://docs.djangoproject.com/en/3.1/topics/install/
-* Models and Databases https://docs.djangoproject.com/en/3.1/topics/db/
-  * Working on this now!
+* Migrations https://docs.djangoproject.com/en/3.1/topics/migrations/
+* Signals https://docs.djangoproject.com/en/3.1/topics/signals/
+
 * Handling HTTP Requests https://docs.djangoproject.com/en/3.1/topics/http/
 * Working with forms https://docs.djangoproject.com/en/3.1/topics/forms/
 * Templates https://docs.djangoproject.com/en/3.1/topics/templates/
 * Class-based views https://docs.djangoproject.com/en/3.1/topics/class-based-views/
-* Migrations https://docs.djangoproject.com/en/3.1/topics/migrations/
 * Managing files https://docs.djangoproject.com/en/3.1/topics/files/
 * Testing in Django https://docs.djangoproject.com/en/3.1/topics/testing/
 * User Authentication https://docs.djangoproject.com/en/3.1/topics/auth/
@@ -69,7 +72,6 @@
 * Performance and optimization https://docs.djangoproject.com/en/3.1/topics/performance/
 * Serialization https://docs.djangoproject.com/en/3.1/topics/serialization/
 * Django Settings https://docs.djangoproject.com/en/3.1/topics/settings/
-* Signals https://docs.djangoproject.com/en/3.1/topics/signals/
 * System check https://docs.djangoproject.com/en/3.1/topics/checks/
 * External packages https://docs.djangoproject.com/en/3.1/topics/external-packages/
 * Async support https://docs.djangoproject.com/en/3.1/topics/async/
@@ -80,13 +82,17 @@
 
 **API Reference**
 
+https://docs.djangoproject.com/en/3.1/ref/validators/
+https://docs.djangoproject.com/en/3.1/ref/databases/
+https://docs.djangoproject.com/en/3.1/ref/schema-editor/
+https://docs.djangoproject.com/en/3.1/ref/signals/
+
 https://docs.djangoproject.com/en/3.1/ref/applications/
 https://docs.djangoproject.com/en/3.1/ref/checks/
 https://docs.djangoproject.com/en/3.1/ref/class-based-views/
 https://docs.djangoproject.com/en/3.1/ref/clickjacking/
 https://docs.djangoproject.com/en/3.1/ref/contrib/
 https://docs.djangoproject.com/en/3.1/ref/csrf/
-https://docs.djangoproject.com/en/3.1/ref/databases/
 https://docs.djangoproject.com/en/3.1/ref/django-admin/
 https://docs.djangoproject.com/en/3.1/ref/exceptions/
 https://docs.djangoproject.com/en/3.1/ref/files/
@@ -95,14 +101,11 @@ https://docs.djangoproject.com/en/3.1/ref/middleware/
 https://docs.djangoproject.com/en/3.1/ref/migration-operations/
 https://docs.djangoproject.com/en/3.1/ref/paginator/
 https://docs.djangoproject.com/en/3.1/ref/request-response/
-https://docs.djangoproject.com/en/3.1/ref/schema-editor/
 https://docs.djangoproject.com/en/3.1/ref/settings/
-https://docs.djangoproject.com/en/3.1/ref/signals/
 https://docs.djangoproject.com/en/3.1/ref/templates/
 https://docs.djangoproject.com/en/3.1/ref/template-response/
 https://docs.djangoproject.com/en/3.1/ref/unicode/
 https://docs.djangoproject.com/en/3.1/ref/urlresolvers/
 https://docs.djangoproject.com/en/3.1/ref/urls/
 https://docs.djangoproject.com/en/3.1/ref/utils/
-https://docs.djangoproject.com/en/3.1/ref/validators/
 https://docs.djangoproject.com/en/3.1/ref/views/
