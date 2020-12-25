@@ -24,8 +24,6 @@ Top level:
 * https://docs.djangoproject.com/en/3.1/topics/db
 * https://docs.djangoproject.com/en/3.1/ref/models
 
-* https://docs.djangoproject.com/en/3.1/topics/db/aggregation/
-* https://docs.djangoproject.com/en/3.1/ref/models/querysets/#aggregation-functions
 * https://docs.djangoproject.com/en/3.1/ref/models/querysets/#query-related-tools
 
 * https://docs.djangoproject.com/en/3.1/topics/db/search/
