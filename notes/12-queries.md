@@ -215,7 +215,7 @@ This is a good use case for `F` expressions.
 They rehash some information about relations. They talk about
 `select_related`, which is like the ActiveRecord `include` option. This
 prefetches related objects. You can say
-`Cat.objects.selected_related('toys')` to get the related `Toy`s.
+`Toy.objects.select_related('cat')` to get the related `Cat`s.
 
 You can use `add`, `create`, `remove` (for many-to-many or `ForeignKey`
 if `null=True`), `clear` (ditto), `set` on a reverse relation manager
