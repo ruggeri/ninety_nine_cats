@@ -15,10 +15,15 @@ def cool_function():
   pass
 
 def cool_function_two():
+  # Do some stuff which doesn't need to be in the transaction
+
   # A context manager is anything with __enter__ and __exit__ methods.
   with transaction.atomic():
     # do some cool stuff
     pass
+
+  # When transaction over, do even more stuff that is slow. Maybe send
+  # an email?
 
 def cool_function_three():
   model = Model.objects.get(id=123)
@@ -36,6 +41,8 @@ def cool_function_three():
     #
     # Since model.xyz didn't get saved, you might want to reset it.
     pass
+
+  # Do something that should happen even if transaction fails?
 ```
 
 They warn you from catching DB errors when in a transaction.
