@@ -437,7 +437,3 @@ optimized for your DB engine.
 **regex**
 
 You can match on REGEXP.
-
-## TODO
-
-I've read up through https://docs.djangoproject.com/en/3.1/ref/models/querysets/#aggregation-functions

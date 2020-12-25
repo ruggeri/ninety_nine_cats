@@ -103,6 +103,3 @@ There are also methods generated for you:
 * `get_next_by_created_at`: or `updated_at`, or whatever. Such a method
   exists for every `DateTimeField`, `DateField`. It helps you find the
   chronologically prev/next.
-
-https://docs.djangoproject.com/en/3.1/ref/models/instances/#validating-objects
-
