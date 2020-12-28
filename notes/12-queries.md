@@ -223,11 +223,11 @@ like `Cat#toys`.
 
 ## Other QuerySet Methods
 
-**anotate**
+**annotate**
 
 Allows you to add additional fields to pull down. The most common case
 for this is aggregations. For instance:
-`Blog.objects.anotate(number_of_entries=Count('entry'))` will get `Blog`
+`Blog.objects.annotate(number_of_entries=Count('entry'))` will get `Blog`
 items and an entry count.
 
 **order_by**
