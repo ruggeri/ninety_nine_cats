@@ -1,5 +1,9 @@
 from django.db import models
 
+class ToysQuerySet(models.QuerySet):
+  def get_mousey(self):
+    return self.filter(name='mousey')
+
 class Cat(models.Model):
   name = models.CharField(max_length=255)
   age = models.IntegerField()
@@ -8,6 +12,8 @@ class Cat(models.Model):
     return self.name
 
 class Toy(models.Model):
+  objects = ToysQuerySet.as_manager()
+
   cat = models.ForeignKey(
       Cat,
       on_delete=models.CASCADE,
