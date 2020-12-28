@@ -13,6 +13,7 @@
   explained.
 * Must learn about validators!
   * Clean vs validate vs check. They're all Field methods?
+  * How to add custom DB constraints?
 * How are files/images handled?
 
 ## Tutorials and More Documentation
@@ -25,26 +26,23 @@ Top level:
 * https://docs.djangoproject.com/en/3.1/topics/db
 * https://docs.djangoproject.com/en/3.1/ref/models
 
-* https://docs.djangoproject.com/en/3.1/ref/models/querysets/#query-related-tools
-
-* https://docs.djangoproject.com/en/3.1/topics/db/search/
-* https://docs.djangoproject.com/en/3.1/topics/db/managers/
-* https://docs.djangoproject.com/en/3.1/topics/db/sql/
-* https://docs.djangoproject.com/en/3.1/topics/db/multi-db/
-* https://docs.djangoproject.com/en/3.1/topics/db/tablespaces/
 * https://docs.djangoproject.com/en/3.1/topics/db/optimization/
-* https://docs.djangoproject.com/en/3.1/topics/db/instrumentation/
 * https://docs.djangoproject.com/en/3.1/topics/db/examples/
+* All other topics have been reviewed and I'm not missing any.
+
+* https://docs.djangoproject.com/en/3.1/ref/models/querysets/#query-related-tools
 
 * https://docs.djangoproject.com/en/3.1/ref/models/lookups/
 * https://docs.djangoproject.com/en/3.1/ref/models/relations/
 * https://docs.djangoproject.com/en/3.1/ref/models/indexes/
 * https://docs.djangoproject.com/en/3.1/ref/models/constraints/
 * https://docs.djangoproject.com/en/3.1/ref/models/meta/
+
 * https://docs.djangoproject.com/en/3.1/ref/models/options/
 * https://docs.djangoproject.com/en/3.1/ref/models/expressions/
 * https://docs.djangoproject.com/en/3.1/ref/models/conditional-expressions/
 * https://docs.djangoproject.com/en/3.1/ref/models/database-functions/
+* I should review all refs at the end.
 
 **Topic Guides**
 
@@ -53,13 +51,13 @@ Top level:
 * Migrations https://docs.djangoproject.com/en/3.1/topics/migrations/
 * Signals https://docs.djangoproject.com/en/3.1/topics/signals/
 
-* Handling HTTP Requests https://docs.djangoproject.com/en/3.1/topics/http/
-* Working with forms https://docs.djangoproject.com/en/3.1/topics/forms/
+* Handling HTTP Requests https://docs.djangoproject.com/en/3.1/topics/http/ (8 pages)
+* Working with forms https://docs.djangoproject.com/en/3.1/topics/forms/ (4 pages)
 * Templates https://docs.djangoproject.com/en/3.1/topics/templates/
-* Class-based views https://docs.djangoproject.com/en/3.1/topics/class-based-views/
+* Class-based views https://docs.djangoproject.com/en/3.1/topics/class-based-views/ (5 pages)
 * Managing files https://docs.djangoproject.com/en/3.1/topics/files/
-* Testing in Django https://docs.djangoproject.com/en/3.1/topics/testing/
-* User Authentication https://docs.djangoproject.com/en/3.1/topics/auth/
+* Testing in Django https://docs.djangoproject.com/en/3.1/topics/testing/ (4 pages)
+* User Authentication https://docs.djangoproject.com/en/3.1/topics/auth/ (3 pages)
 * Cache Framework https://docs.djangoproject.com/en/3.1/topics/cache/
 * Conditional View Processing https://docs.djangoproject.com/en/3.1/topics/conditional-view-processing/
 * Cryptographic Signing https://docs.djangoproject.com/en/3.1/topics/signing/
