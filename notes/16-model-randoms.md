@@ -150,3 +150,20 @@ They suggest using `selected_related` and `prefetch_related` to avoid
 N+1 queries.
 
 They recommend bulk operations.
+
+## Indexes
+
+```python
+# This is one way to create an index. More flexible.
+class Cat(models.Model):
+  class Meta:
+    indexes = [
+      models.Index(fields=['name']),
+    ]
+
+# Here is another way, for just a single column.
+
+class Cat(models.Model):
+  # Note that if you set unique=True, then db_index is not needed.
+  name = models.CharField(max_length=255, db_index=True)
+```

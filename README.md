@@ -26,30 +26,19 @@
 **Model Docs**
 
 * https://docs.djangoproject.com/en/3.1/topics/db
+  * I have re-reviewed these to make sure I'm not missing anything.
 * https://docs.djangoproject.com/en/3.1/ref/models
-
-* https://docs.djangoproject.com/en/3.1/topics/db/examples/
-* All other topics have been reviewed and I'm not missing any.
-
-* https://docs.djangoproject.com/en/3.1/ref/models/querysets/#query-related-tools
-
-* https://docs.djangoproject.com/en/3.1/ref/models/lookups/
-* https://docs.djangoproject.com/en/3.1/ref/models/relations/
-* https://docs.djangoproject.com/en/3.1/ref/models/indexes/
-* https://docs.djangoproject.com/en/3.1/ref/models/constraints/
-* https://docs.djangoproject.com/en/3.1/ref/models/meta/
-
-* https://docs.djangoproject.com/en/3.1/ref/models/options/
-* https://docs.djangoproject.com/en/3.1/ref/models/expressions/
-* https://docs.djangoproject.com/en/3.1/ref/models/conditional-expressions/
-* https://docs.djangoproject.com/en/3.1/ref/models/database-functions/
-* I should review all refs at the end.
-
-* Also, I should make a list of all db topics that I've covered. I
-  should rewrite these notes in an order that is sensible and logical to
-  me, and that not only covers the information that was given, but that
-  also explains to me what I think I should know, but might not have
-  been taught.
+  * I will want to re-review these when I'm done.
+* TODO
+  * https://docs.djangoproject.com/en/3.1/ref/models/querysets/#query-related-tools
+  * https://docs.djangoproject.com/en/3.1/ref/models/constraints/
+  * https://docs.djangoproject.com/en/3.1/ref/models/options/
+  * https://docs.djangoproject.com/en/3.1/ref/models/expressions/
+  * https://docs.djangoproject.com/en/3.1/ref/models/conditional-expressions/
+  * https://docs.djangoproject.com/en/3.1/ref/models/database-functions/
+* When done, I should write my own little tutorial, covering all topics
+  that I think are needed/useful. I found their documents a little
+  scattered.
 
 **Topic Guides**
 
