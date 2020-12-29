@@ -135,3 +135,18 @@ SELECT *
 Execution time: 0.000123s [Database: default]
 [(1, 'Markov', 13)]
 ```
+
+## Optimization
+
+They mention that `cat.toys.all()` will not cache. Therefore, in a
+template, you may want to use the `with` template tag which lets you
+make a local variable and thus cache a result.
+
+If there are a lot of objects to fetch, you may prefer to use the
+`QuerySet#iterator` method. This avoids the cache and just reads the
+items one-at-a-time cursor-style.
+
+They suggest using `selected_related` and `prefetch_related` to avoid
+N+1 queries.
+
+They recommend bulk operations.

@@ -15,6 +15,9 @@
   * Clean vs validate vs check. They're all Field methods?
   * How to add custom DB constraints?
 * How are files/images handled?
+* I feel like I'm still a little hazy on 'through' relations.
+* And I don't really know how model validation is done.
+* And I don't know how to do constraints.
 
 ## Tutorials and More Documentation
 
@@ -22,11 +25,9 @@
 
 **Model Docs**
 
-Top level:
 * https://docs.djangoproject.com/en/3.1/topics/db
 * https://docs.djangoproject.com/en/3.1/ref/models
 
-* https://docs.djangoproject.com/en/3.1/topics/db/optimization/
 * https://docs.djangoproject.com/en/3.1/topics/db/examples/
 * All other topics have been reviewed and I'm not missing any.
 
@@ -43,6 +44,12 @@ Top level:
 * https://docs.djangoproject.com/en/3.1/ref/models/conditional-expressions/
 * https://docs.djangoproject.com/en/3.1/ref/models/database-functions/
 * I should review all refs at the end.
+
+* Also, I should make a list of all db topics that I've covered. I
+  should rewrite these notes in an order that is sensible and logical to
+  me, and that not only covers the information that was given, but that
+  also explains to me what I think I should know, but might not have
+  been taught.
 
 **Topic Guides**
 
@@ -106,3 +113,7 @@ https://docs.djangoproject.com/en/3.1/ref/urlresolvers/
 https://docs.djangoproject.com/en/3.1/ref/urls/
 https://docs.djangoproject.com/en/3.1/ref/utils/
 https://docs.djangoproject.com/en/3.1/ref/views/
+
+## Other
+
+https://github.com/jazzband/django-debug-toolbar/
