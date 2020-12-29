@@ -175,6 +175,10 @@ for the association method `cat.humans` and for the query
 To be clear: it doesn't otherwise matter what side of the relationship
 you put the `ManyToManyField`.
 
+Last random note: if you change `related_name`, Django will create a
+do-nothing migration. Any change to field attributes always has Django
+create a migration. smh.
+
 **Custom Through Tables**
 
 Sometimes a join table should have extra fields. Let's consider if

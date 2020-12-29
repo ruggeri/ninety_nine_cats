@@ -5,6 +5,11 @@ class ToysQuerySet(models.QuerySet):
     return self.filter(name='mousey')
 
 class Cat(models.Model):
+  class Meta:
+    indexes = [
+        models.Index(fields=['name']),
+    ]
+
   name = models.CharField(max_length=255)
   age = models.IntegerField()
 
