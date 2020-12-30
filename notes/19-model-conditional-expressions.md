@@ -24,6 +24,14 @@ cats = Cat.objects.annotate(
 )
 ```
 
-## TODO
+I believe we've already seen how to do a form of conditional
+aggregation:
 
-https://docs.djangoproject.com/en/3.1/ref/models/conditional-expressions/#advanced-queries
+```python
+Cat.objects.aggregate(
+  num_cats=Count('id', filter=Q(name='Markov'))
+)
+
+# SELECT COUNT("cats_cat"."id") FILTER (WHERE "cats_cat"."name" = 'Markov') AS "num_cats"
+#   FROM "cats_cat"
+```

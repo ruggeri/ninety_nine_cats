@@ -18,6 +18,7 @@
 * I feel like I'm still a little hazy on 'through' relations.
 * And I don't really know how model validation is done.
 * And I don't know how to do constraints.
+* Nested queries?
 
 ## Tutorials and More Documentation
 
