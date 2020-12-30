@@ -10,6 +10,12 @@ class Cat(models.Model):
         models.Index(fields=['name']),
     ]
 
+    constraints = [
+        models.CheckConstraint(
+            check=models.Q(age__gt=0), name="cat_age_gt_zero"
+        )
+    ]
+
   name = models.CharField(max_length=255)
   age = models.IntegerField()
 
