@@ -166,21 +166,21 @@
 
 ## Concurrency, Indexing, Constraints
 
-**Concurrency/Transactions**
+**15 Concurrency/Transactions**
 
 * Show an example where `F` is used.
 * Mention that `update_fields=[...]` can be used.
 * `django.db.transaction.atomic` decorator.
   * Can also use it as a context manager.
 
-**Indexes**
+**16 Indexes**
 
 * You add them to `Meta::indexes`. You can specify the set of fields to
   index on.
 * For single column index, you can just set `db_index=True` on the
   field.
 
-**Constraints**
+**17 Constraints**
 
 * Constraints are not validations. They won't raise validation errors.
   But they will raise DB integrity errors if you try to save.
@@ -191,7 +191,7 @@
 
 ## Models And Inheritance
 
-**Abstract Base Classes**
+**18 Abstract Base Classes**
 
 * You can set `Meta::abstract`.
 * This is good for extending a default model class with more
@@ -199,7 +199,7 @@
 * You're more likely to use these kinds of classes from a contrib
   library than write them yourself.
 
-**Multi Table Inheritance**
+**19 Multi Table Inheritance**
 
 * Define a `Place` class. Then consider a `Restaurant` *is a* `Place`.
 * You can inherit `Restaurant` from `Place`. Django will create the
