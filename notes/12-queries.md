@@ -113,7 +113,11 @@ Other matchers are:
 * `iexact`
 * `contains`, `icontains`
 * `startswith`/`istartswith`, `endswith`/`iendswith`,
-* `in`
+* `in`: you give a list of values
+  * Here, you can use a nested query!
+* `gt`, `lt`
+* `isnull`
+* `regex`
 
 **Filtering Spanning Relations**
 
@@ -369,6 +373,34 @@ Execution time: 0.000086s [Database: default]
 Out[28]: [<Cat: Markov>]
 ```
 
+You can even do this baroque wildness to filter:
+
+```python
+# Just prefetch those toys named 'mousey'
+In [7]: queryset = Toy.objects.filter(name='mousey')
+
+In [8]: Cat.objects.prefetch_related(Prefetch('toys', queryset=queryset))
+Out[8]: SELECT "cats_cat"."id",
+       "cats_cat"."name",
+       "cats_cat"."age"
+  FROM "cats_cat"
+ LIMIT 21
+
+Execution time: 0.000981s [Database: default]
+SELECT "cats_toy"."id",
+       "cats_toy"."cat_id",
+       "cats_toy"."name"
+  FROM "cats_toy"
+ WHERE ("cats_toy"."name" = 'mousey' AND "cats_toy"."cat_id" IN (1))
+
+Execution time: 0.000530s [Database: default]
+<QuerySet [<Cat: Markov>]>
+```
+
+Using `Prefetch` `queryset` option, one can also change the ordering. If
+filtering, you probably also want to set the `to_attr` attribute to give
+a custom name for the prefetched result.
+
 **defer/only**
 
 Another baroque optimization. You can `defer(field_name)`, and this
@@ -401,6 +433,15 @@ Ditto.
 
 Both methods will not call `#save`, and will not fire signals.
 
+**in_bulk**
+
+This allows you to get multiple objects by their id. You write:
+
+```python
+Cat.objects.in_bulk([1, 2 , 3])
+# => gives you a map of { id: Cat object }
+```
+
 **iterator**
 
 Gives an iterator over the `QuerySet`. But as the `QuerySet` is
@@ -426,14 +467,45 @@ in the object under consideration (rather than related objects).
 
 Of course, does not call save, nor emit signals.
 
-## Field Matchers
+**FilteredRelation**
 
-**in**
+Ugh. Most of the time, you have a very simply JOIN ON condition. It just
+matches the primary and foreign key. But sometimes, you might want to
+have a more sophisticated condition. The `FilteredRelation` allows you
+to do this. You call:
 
-Interesting, but you can pass a `QuerySet` that would produce a list of
-results. This will produce a nested query. This may or may not be well
-optimized for your DB engine.
+```python
+Cat.objects.annotate(
+  mousey_toys=FilteredRelation('toys', condition=Q(toys__name='mousey'))
+).annotate(
+  num_mousey_toys=Count('mousey_toys')
+).filter(
+  num_mousey_toys=0
+)
 
-**regex**
+Out[62]: SELECT "cats_cat"."id",
+       "cats_cat"."name",
+       "cats_cat"."age",
+       COUNT(mousey_toys."id") AS "num_mousey_toys"
+  FROM "cats_cat"
+  LEFT OUTER JOIN "cats_toy" mousey_toys
+    ON ("cats_cat"."id" = mousey_toys."cat_id" AND (mousey_toys."name" = 'mousey'))
+ GROUP BY "cats_cat"."id",
+          "cats_cat"."name",
+          "cats_cat"."age"
+HAVING COUNT(mousey_toys."id") = 0
+```
 
-You can match on REGEXP.
+I mean... This is hella wack. And you can more easily simply write:
+
+```python
+In [66]: Cat.objects.filter(toys__isnull=True)
+    ...:
+Out[66]: SELECT "cats_cat"."id",
+       "cats_cat"."name",
+       "cats_cat"."age"
+  FROM "cats_cat"
+  LEFT OUTER JOIN "cats_toy"
+    ON ("cats_cat"."id" = "cats_toy"."cat_id")
+ WHERE "cats_toy"."id" IS NULL
+```

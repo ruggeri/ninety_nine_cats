@@ -94,5 +94,5 @@ Book.objects.annotate(num_authors=Count('authors')).aggregate(avg_num_authors=Av
 
 * Avg
 * Count
-* Max
+* Max, Min
 * Sum

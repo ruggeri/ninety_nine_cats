@@ -31,7 +31,6 @@
 * https://docs.djangoproject.com/en/3.1/ref/models
   * I will want to re-review these when I'm done.
 * TODO
-  * https://docs.djangoproject.com/en/3.1/ref/models/querysets/#query-related-tools
   * https://docs.djangoproject.com/en/3.1/ref/models/expressions/
 * When done, I should write my own little tutorial, covering all topics
   that I think are needed/useful. I found their documents a little
