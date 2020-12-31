@@ -110,6 +110,11 @@
 * But this will cause the same record to be returned multiple. So you
   may want to be careful.
 * You may want to use `distinct`.
+* But maybe I should stop you: why are you doing this? Why not do
+  `Toy.objects.filter(name='mousey')`. If you expect a small number of
+  items, then you can bulk load those `Cats`, right?
+* Or you should do the `Exists` and subquerry way described below in the
+  advanced querying explanation.
 
 **10 Prefetching Related Objects**
 
@@ -122,28 +127,42 @@
 
 ## Advanced Querying: Annotation and Aggregation
 
-**Q and F Expressions**
+**11 Q and F Expressions**
 
 * An `F` expression can be used anywhere a column name is needed. For
-  instance, `Cat.objects.filter(toys__name=F('name'))`.
+  instance, `Cat.objects.filter(toys__name=F('name'))`. Also good for
+  annotations.
   * TODO: How do you know what table `name` resides in?
 * A `Q` expression lets you declare a filtering query. For instance, if
   you wanted to find all rows that matched one of two conditions, you
   could issue: `Cat.objects.filter(Q(name='Markov') | Q(age=10))`.
+* You can use other DB functions like `Lower('name')`.
 
-**Aggregation**
+**12 Aggregation**
 
 * There are many aggregation functions like `Avg`, `Count`, `Max`,
   `Min`, `Sum`.
-* If you aggregate a field, you'll collapse the table. You can name
-  aggregations.
+* If you aggregate a field, you'll immediately collapse the table. You
+  can name aggregations.
 
-**Annotation**
+**13 Annotation**
 
 * This allows you to add additional fields. Useful for doing
-  aggregations from related tables.
+  aggregations from related tables. For instance,
+  `Cat.objects.annotate(Count('toys'))`.
 * Be careful though. JOINs are used rather than subqueries. So doing
   multiple counts in one annotation is probably going to go wrong.
+
+**14 Subqueries**
+
+* A lot of the implicit JOINing will give bad results.
+* When writing `Cat.objects.filter(toy__name='mousey')`, you can instead
+  use `Exists` and a subquery. This avoids duplication.
+* Likewise, we've mentioned you need to be careful about aggregations
+  that will do JOINs. You should use subqueries here.
+* And you can use subqueries for fancy `IN` queries.
+* Subqueries might be nicer/more explicit than relying on Django's
+  implicit JOINing.
 
 ## Concurrency, Indexing, Constraints
 
