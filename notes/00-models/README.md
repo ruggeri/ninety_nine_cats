@@ -158,8 +158,9 @@
 * A lot of the implicit JOINing will give bad results.
 * When writing `Cat.objects.filter(toy__name='mousey')`, you can instead
   use `Exists` and a subquery. This avoids duplication.
-* Likewise, we've mentioned you need to be careful about aggregations
-  that will do JOINs. You should use subqueries here.
+* But a similar problem can happen when you do two different
+  aggregations. It's because of two joins happening.
+  * You basically need to be doing DISTINCT all the time.
 * And you can use subqueries for fancy `IN` queries.
 * Subqueries might be nicer/more explicit than relying on Django's
   implicit JOINing.

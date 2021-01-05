@@ -62,33 +62,54 @@ Out[99]: SELECT "cats_cat"."id",
 
 ```python
 # Wrong!
-Cat.objects.annotate(Count('toys'), Count('related_humans')).values('id', 'toys__count', 'related_humans__count')
-Out[131]: SELECT "cats_cat"."id",
-       COUNT("cats_toy"."id") AS "toys__count",
-       COUNT("cats_cathumanrelationship"."human_id") AS "related_humans__count"
-  FROM "cats_cat"
-  LEFT OUTER JOIN "cats_toy"
-    ON ("cats_cat"."id" = "cats_toy"."cat_id")
-  LEFT OUTER JOIN "cats_cathumanrelationship"
-    ON ("cats_cat"."id" = "cats_cathumanrelationship"."cat_id")
- GROUP BY "cats_cat"."id",
-          "cats_cat"."name",
-          "cats_cat"."age"
-
-
-toys_count = Count(Toy.objects.filter(cat_id=OuterRef('id')).values('id'))
-humans_count = Count(CatHumanRelationship.objects.filter(cat_id=OuterRef('id')).values('id'))
-cats = Cat.objects.annotate(toys_count=toys_count, humans_count=humans_count)
-list(cats)
-# SELECT "cats_cat"."id",
-#        "cats_cat"."name",
-#        "cats_cat"."age",
-#        COUNT((SELECT U0."id" FROM "cats_toy" U0 WHERE U0."cat_id" = "cats_cat"."id")) AS "toys_count",
-#        COUNT((SELECT U0."id" FROM "cats_cathumanrelationship" U0 WHERE U0."cat_id" = "cats_cat"."id")) AS "humans_count"
+Cat.objects.annotate(
+  Count('toys'), Count('related_humans')
+).values('id', 'toys__count', 'related_humans__count')
+# Out[131]: SELECT "cats_cat"."id",
+#        COUNT("cats_toy"."id") AS "toys__count",
+#        COUNT("cats_cathumanrelationship"."human_id") AS "related_humans__count"
 #   FROM "cats_cat"
+#   LEFT OUTER JOIN "cats_toy"
+#     ON ("cats_cat"."id" = "cats_toy"."cat_id")
+#   LEFT OUTER JOIN "cats_cathumanrelationship"
+#     ON ("cats_cat"."id" = "cats_cathumanrelationship"."cat_id")
 #  GROUP BY "cats_cat"."id",
 #           "cats_cat"."name",
 #           "cats_cat"."age"
+
+# Okay this comes from the docs, but it is totally fucked.
+#
+# Okay the crazy thing is doing the values...
+toys_count = Toy.objects.filter(
+  cat_id=OuterRef('id')
+).annotate(c=Count('*')).values('c')
+humans_count = CatHumanRelationship.objects.filter(
+  cat_id=OuterRef('id')
+).annotate(c=Count('*')).values('c')
+cats = Cat.objects.annotate(
+  toys_count=toys_count, humans_count=humans_count
+).values('id', 'toys_count', 'humans_count')
+list(cats)
+
+SELECT "cats_cat"."id",
+       (
+        SELECT COUNT(*) AS "c"
+          FROM "cats_toy" U0
+         WHERE U0."cat_id" = "cats_cat"."id"
+         GROUP BY U0."id",
+                  U0."cat_id",
+                  U0."name"
+       ) AS "toys_count",
+       (
+        SELECT COUNT(*) AS "c"
+          FROM "cats_cathumanrelationship" U0
+         WHERE U0."cat_id" = "cats_cat"."id"
+         GROUP BY U0."id",
+                  U0."cat_id",
+                  U0."human_id",
+                  U0."duration"
+       ) AS "humans_count"
+  FROM "cats_cat"
 ```
 
 **RawSQL**
