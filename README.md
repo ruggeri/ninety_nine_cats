@@ -41,7 +41,6 @@
 * Handling HTTP Requests https://docs.djangoproject.com/en/3.1/topics/http/ (8 pages)
 * Working with forms https://docs.djangoproject.com/en/3.1/topics/forms/ (4 pages)
 * Templates https://docs.djangoproject.com/en/3.1/topics/templates/
-* Class-based views https://docs.djangoproject.com/en/3.1/topics/class-based-views/ (5 pages)
 * Managing files https://docs.djangoproject.com/en/3.1/topics/files/
 * Testing in Django https://docs.djangoproject.com/en/3.1/topics/testing/ (4 pages)
 * User Authentication https://docs.djangoproject.com/en/3.1/topics/auth/ (3 pages)
@@ -73,7 +72,6 @@ https://docs.djangoproject.com/en/3.1/ref/signals/
 
 https://docs.djangoproject.com/en/3.1/ref/applications/
 https://docs.djangoproject.com/en/3.1/ref/checks/
-https://docs.djangoproject.com/en/3.1/ref/class-based-views/
 https://docs.djangoproject.com/en/3.1/ref/clickjacking/
 https://docs.djangoproject.com/en/3.1/ref/contrib/
 https://docs.djangoproject.com/en/3.1/ref/csrf/
