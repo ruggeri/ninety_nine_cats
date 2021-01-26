@@ -1,4 +1,4 @@
-from django.http import HttpRequest, HttpResponseRedirect
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.views import generic
@@ -11,7 +11,15 @@ class CatsListView(generic.ListView):
 
   # Override how objects are queried for the list.
   def get_queryset(self):
-    return Cat.objects.order_by('name').all()
+    # Use the request GET parameters.
+    if 'name' not in self.request.GET:
+      return Cat.objects.order_by('name').all()
+    else:
+      # A little silly. If someone specifies a name parameter, we can
+      # filter all cats with that name.
+      return Cat.objects.filter(
+          name=self.request.GET['name'],
+      ).order_by('name').all()
 
 class CatsDetailView(generic.DetailView):
   # Will auto infer that context_object_name='cat'
@@ -19,6 +27,17 @@ class CatsDetailView(generic.DetailView):
   # URLConf wants to pass in arg as cat_id.
   pk_url_kwarg = 'cat_id'
   template_name = 'cats/cats_detail.html'
+
+  def get_object(self, *args, **kwargs):
+    obj: Cat = super().get_object(*args, **kwargs)
+    obj.view_count += 1
+    obj.save()
+    return obj
+
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    context['toys'] = context['cat'].toys.all()
+    return context
 
 def cats_new(request):
   cat = Cat()

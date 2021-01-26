@@ -1,13 +1,17 @@
 <h1>{{cat.name}}</h1>
 
-{% if cat.toy_set.all %}
+{% if toys %}
 <ul>
-  {% for toy in cat.toy_set.all %}
+  {% for toy in toys %}
   <li>{{toy.name}}</li>
   {% endfor %}
 </ul>
 {% else %}
 <h3>THERE ARE NO TOYS FOR THIS CAT</h3>
 {% endif %}
+
+<p>
+  This cat has been viewed {{cat.view_count}} times.
+</p>
 
 <a href="{% url "cats:list" %}">Back to cats list</a>
