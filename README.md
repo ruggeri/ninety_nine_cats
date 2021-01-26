@@ -2,10 +2,6 @@
 
 * How to setup Postgres?
 * Django Rest Framework.
-* Various attributes of model properties.
-* How associations are done. Go deeper into associated objects/creation.
-  * For `ForeignKey`, what are my options? The inverse name appears to be `toy_set`, but I query like `Cat.objects.filter(toy__name="mousey")`?
-* Chaining queries onto QuerySet.
 * Templates
   * Reduce repetition of loading templates and everything.
 * How are form errors handled?
