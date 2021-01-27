@@ -6,7 +6,6 @@
 
 * https://www.django-rest-framework.org/api-guide/parsers/
 * https://www.django-rest-framework.org/api-guide/renderers/
-* https://www.django-rest-framework.org/api-guide/serializers/
 * https://www.django-rest-framework.org/api-guide/fields/
 * https://www.django-rest-framework.org/api-guide/relations/
 * https://www.django-rest-framework.org/api-guide/validators/
