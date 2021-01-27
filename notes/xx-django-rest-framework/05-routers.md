@@ -1,4 +1,4 @@
-# Routers
+# `rest_framework.routers`
 
 You instantiate a router instance. You `#register` some view sets. And
 then you add `router.urls` to the urlpatterns.

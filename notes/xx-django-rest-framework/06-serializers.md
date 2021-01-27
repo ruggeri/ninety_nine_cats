@@ -1,4 +1,4 @@
-# Serializers
+# `rest_framework.serializers`
 
 ## Introduction
 
@@ -134,20 +134,6 @@ serializer.data
 
 # There isn't by default a way to *deserialize* multiple objects.
 ```
-
-## Nesting
-
-* **TODO**:
-  * https://www.django-rest-framework.org/api-guide/serializers/#dealing-with-nested-objects
-  * https://www.django-rest-framework.org/api-guide/serializers/#writable-nested-representations
-
-## TODO
-
-* https://www.django-rest-framework.org/api-guide/serializers/#modelserializer
-* https://www.django-rest-framework.org/api-guide/serializers/#hyperlinkedmodelserializer
-* https://www.django-rest-framework.org/api-guide/serializers/#listserializer
-* https://www.django-rest-framework.org/api-guide/serializers/#baseserializer
-* https://www.django-rest-framework.org/api-guide/serializers/#advanced-serializer-usage
 
 ## Sources
 
