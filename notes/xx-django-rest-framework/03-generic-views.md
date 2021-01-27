@@ -70,6 +70,10 @@
 * `DestroyModelMixin`
   * Defines `destroy`. Gets the model object and calls `delete`. Returns
     an empty response 204 NO CONTENT.
+* Hooks:
+  * Each mixin defines hooks like `perform_create`, `perform_update`,
+    `perform_destroy` et cetera. You can override these if you want to
+    add post-create hooks like sending an email for instance.
 
 ## Sources
 

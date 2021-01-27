@@ -4,8 +4,6 @@
 
 ## TODO
 
-* https://www.django-rest-framework.org/api-guide/viewsets/
-* https://www.django-rest-framework.org/api-guide/routers/
 * https://www.django-rest-framework.org/api-guide/parsers/
 * https://www.django-rest-framework.org/api-guide/renderers/
 * https://www.django-rest-framework.org/api-guide/serializers/
