@@ -4,14 +4,12 @@
 
 ## TODO
 
-* https://www.django-rest-framework.org/api-guide/parsers/
-* https://www.django-rest-framework.org/api-guide/renderers/
 * https://www.django-rest-framework.org/api-guide/fields/
 * https://www.django-rest-framework.org/api-guide/relations/
 * https://www.django-rest-framework.org/api-guide/validators/
 * https://www.django-rest-framework.org/api-guide/authentication/
 * https://www.django-rest-framework.org/api-guide/permissions/
-* https://www.django-rest-framework.org/api-guide/permissions/
+* https://www.django-rest-framework.org/api-guide/caching/
 * https://www.django-rest-framework.org/api-guide/throttling/
 * https://www.django-rest-framework.org/api-guide/filtering/
 * https://www.django-rest-framework.org/api-guide/pagination/

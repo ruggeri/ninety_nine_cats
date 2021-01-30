@@ -93,9 +93,13 @@
     want this to be done yourself. So you can effectively only do
     nesting with read_only fields.
 
-## TODO
+## Summary
 
-* I have only barely started reading the source code on serializers.
+* I've reviewed the source code at a medium level. Better than skimming,
+  but it's also torturedly introspective, so I didn't go *too* deep.
+* Anyway, I think I understand most of what is going on with
+  Serializers. I guess I could stand to know a little more about
+  *fields*. But I'm probably good.
 
 ## Sources
 
