@@ -92,6 +92,15 @@ value if this is a `ManyToManyField`.
 * You can also add `save_on_top = True` to show save buttons at the top
   of your model.
 
+## View On Site
+
+By default, if `get_absolute_url` is defined on the model, then a "View
+on site" button will be generated. You can disable this by setting
+`view_on_site = False`.
+
+On the other hand, you can specify a callable. This takes in the model
+object, and should return a URL.
+
 ## Further Form Customization
 
 * By default, the admin will generate a `ModelForm` for you. I don't

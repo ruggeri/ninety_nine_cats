@@ -1,15 +1,6 @@
 ## TODO
 
-* TODO: I've read up to here:
-  * https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#django.contrib.admin.ModelAdmin.search_fields
 * Future Sections:
-  * ModelAdmin
-    * https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#custom-template-options
-    * https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#modeladmin-methods
-    * https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#other-methods
-    * https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#modeladmin-asset-definitions
-    * https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#jquery
-    * https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#adding-custom-validation-to-the-admin
   * https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#inlinemodeladmin-objects
   * https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#overriding-admin-templates
   * https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#adminsite-objects
