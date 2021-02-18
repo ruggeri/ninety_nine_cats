@@ -71,7 +71,6 @@ https://docs.djangoproject.com/en/3.1/ref/checks/
 https://docs.djangoproject.com/en/3.1/ref/clickjacking/
 https://docs.djangoproject.com/en/3.1/ref/contrib/
 https://docs.djangoproject.com/en/3.1/ref/csrf/
-https://docs.djangoproject.com/en/3.1/ref/django-admin/
 https://docs.djangoproject.com/en/3.1/ref/exceptions/
 https://docs.djangoproject.com/en/3.1/ref/files/
 https://docs.djangoproject.com/en/3.1/ref/forms/
