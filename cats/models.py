@@ -44,6 +44,9 @@ class Human(models.Model):
       related_name='related_humans'
   )
 
+  def __str__(self):
+    return self.name
+
 class CatHumanRelationship(models.Model):
   cat = models.ForeignKey(
       Cat, on_delete=models.CASCADE, related_name="relationships"
