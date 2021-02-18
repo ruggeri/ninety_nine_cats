@@ -1,4 +1,4 @@
-## Setup
+# Setting Up The Django Admin
 
 You must start by running `./manage.py createsuperuser` to create a user
 to administer the admin panel. You must update your project's primary

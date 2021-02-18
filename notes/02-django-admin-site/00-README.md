@@ -1,19 +1,13 @@
 ## TODO
 
-* Future Sections:
-  * https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#inlinemodeladmin-objects
-  * https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#overriding-admin-templates
-  * https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#adminsite-objects
-  * https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#logentry-objects
-  * https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#reversing-admin-urls
-  * https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#the-staff-member-required-decorator
+* I will not cover super-deep customization of the Django admin.
+* To do so, I would have to learn more about Django forms and formsets.
+  This is out of my immediate scope.
+* If I wanted to do deep customization, I could also look into
+  overriding the Django admin templates.
+  * This is documented here: https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#overriding-admin-templates
 
-* Past sections to review:
-* https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#django.contrib.admin.ModelAdmin.filter_horizontal
+**TODO**
 
-* Will probably have to look up `ModelForm`.
-
-* Other pages in admin ref:
-  * https://docs.djangoproject.com/en/3.1/ref/contrib/admin/actions/
-  * https://docs.djangoproject.com/en/3.1/ref/contrib/admin/admindocs/
-  * https://docs.djangoproject.com/en/3.1/ref/contrib/admin/javascript/
+* I haven't read about custom actions yet: https://docs.djangoproject.com/en/3.1/ref/contrib/admin/actions/
+  * After I read this, I want to put Django admin to bed.
