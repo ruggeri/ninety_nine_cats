@@ -8,14 +8,33 @@ class ToyInline(admin.StackedInline):
   # page.
   extra = 0
 
+  # Show a friendly link to the change page.
+  show_change_link = True
+
+@admin.register(models.Cat)
 class CatAdmin(admin.ModelAdmin):
-  # Allow them to create toys directly from a Cat object.
+  search_fields = ['name']
+
   inlines = [ToyInline]
 
+@admin.register(models.Toy)
 class ToyAdmin(admin.ModelAdmin):
-  # When listing toys, also list the cat they belong to. Could be slow
-  # because triggers an N+1 query.
-  list_display = ['name', 'cat']
+  # Avoids an N+1 caused by `cat_age`.
+  def get_queryset(self, request):
+    queryset = super().get_queryset(request)
+    return queryset.prefetch_related('cat')
 
-admin.site.register(models.Cat, CatAdmin)
-admin.site.register(models.Toy, ToyAdmin)
+  # A silly custom field.
+  def cat_age(self, toy):
+    return toy.cat.age
+
+  search_fields = ['name']
+  list_display = ['id', 'name', 'cat_age']
+  ordering = ['id']
+
+  # Different ways to render the ForeignKey.
+  autocomplete_fields = ['cat']
+  # raw_id_fields = ['cat']
+  # radio_fields = {'cat': admin.HORIZONTAL}
+
+# filter_horizontal
