@@ -32,4 +32,5 @@ instance, what if we want to show the title of their most recent blog
 post?
 
 One way is to override `get_queryset`. Here we can do stuff like
-`preload_relation`, or some kind of weird join, or whatever.
+`prefetch_related`, or some kind of weird join, or whatever. This seems
+pretty recommended.

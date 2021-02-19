@@ -12,7 +12,7 @@ WHERE (first_name ILIKE '%John%' OR last_name ILIKE '%John%')
 ```
 
 If you want to be more specific about the field lookup, you can say
-`'first_name_exact'`.
+`'first_name__exact'`.
 
 By default, only a limited number of results will be shown. Presumably
 it is equal to the page size? The total number of matches will be shown

@@ -38,6 +38,10 @@ top of, ultimately, a hidden `<select multiple>`.
 If you set `raw_id_fields` to include a `ManyToManyField`, you can also
 write a comma separated value of ids.
 
+Note one weird thing: the `ManyToManyField` can only be administered in
+the *forward* direction. That's annoying, especially if the `ManyToMany`
+is trivial. You'll have to use inlines.
+
 ## Further Customization
 
 There are methods to control the form fields for `ForeignKeyField`,
