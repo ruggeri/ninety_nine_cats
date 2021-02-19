@@ -39,7 +39,6 @@
 * Templates https://docs.djangoproject.com/en/3.1/topics/templates/
 * Managing files https://docs.djangoproject.com/en/3.1/topics/files/
 * Testing in Django https://docs.djangoproject.com/en/3.1/topics/testing/ (4 pages)
-* User Authentication https://docs.djangoproject.com/en/3.1/topics/auth/ (3 pages)
 * Cache Framework https://docs.djangoproject.com/en/3.1/topics/cache/
 * Conditional View Processing https://docs.djangoproject.com/en/3.1/topics/conditional-view-processing/
 * Cryptographic Signing https://docs.djangoproject.com/en/3.1/topics/signing/
