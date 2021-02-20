@@ -11,8 +11,15 @@ first clears any existing session. Then it stores some info like the
 user's id. You'll of course typically want to use
 `django.contrib.auth.authenticate` before calling `login`.
 
-To log a user out, simply use `django.contrib.auth.logout(request)`. All user
-session data will be cleared.
+Again, you won't typically need to do this because it will be done for
+you by Django's login view.
+
+To log a user out, simply use `django.contrib.auth.logout(request)`. All
+user session data will be cleared. Again, there's a logout view!
+
+BTW: also the user's password hash (suitably re-hashed) is stored in the
+session. Thus, if the user changes their password, then all existing
+sessions are invalidated.
 
 ## Limiting Views To Authenticated Users
 

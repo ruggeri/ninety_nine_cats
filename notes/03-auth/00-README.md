@@ -15,10 +15,6 @@ be checked. These will be used by default to check passwords whenever
 ## TODO
 
 * Authentication in Web requests (earlier parts have already been completed)
-  https://docs.djangoproject.com/en/3.1/topics/auth/default/#redirecting-unauthorized-requests-in-class-based-views
-  https://docs.djangoproject.com/en/3.1/topics/auth/default/#module-django.contrib.auth.views
-  https://docs.djangoproject.com/en/3.1/topics/auth/default/#helper-functions
-  https://docs.djangoproject.com/en/3.1/topics/auth/default/#module-django.contrib.auth.forms
   https://docs.djangoproject.com/en/3.1/topics/auth/default/#authentication-data-in-templates
 
 https://docs.djangoproject.com/en/3.1/ref/contrib/auth/

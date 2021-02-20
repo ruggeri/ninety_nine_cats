@@ -79,6 +79,8 @@ know how to do that yet!
   * I think the reason is that there may be more than one authentication
     "backend," and thus going directly to the model is too direct.
   * I'm not sure why `request` is needed...
+* But I think you seldom will need this, since we'll later see how users
+  can login through a typical web view.
 
 ## `Permission`s
 
