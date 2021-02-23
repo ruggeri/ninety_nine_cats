@@ -79,8 +79,18 @@ know how to do that yet!
   * I think the reason is that there may be more than one authentication
     "backend," and thus going directly to the model is too direct.
   * I'm not sure why `request` is needed...
+    * I think maybe some external backends might want it?
 * But I think you seldom will need this, since we'll later see how users
   can login through a typical web view.
+
+**Password Strength Validation**
+
+We can validate whether the password meets threshold criteria of a
+strong password. This is configured in
+`settings.AUTH_PASSWORD_VALIDATORS`. By default, a number of criteria
+(length, similarity to other fields, on a list of common passwords) will
+be checked. These will be used by default to check passwords whenever
+`set_password` is called.
 
 ## `Permission`s
 
@@ -119,3 +129,16 @@ to `Permission`.
 It's simple. You create a new `Permission` model instance. You set
 `codename` to something unique, `name` to something human readable, and
 you set `content_type = ContentTypes.objects.get_for_model(SomeModel)`.
+
+But the more common way is like this:
+
+```python
+class Task(models.Model):
+    # Here you can list custom permissions that will be added by a post
+    # migration hook.
+    class Meta:
+        permissions = [
+            ("change_task_status", "Can change the status of tasks"),
+            ("close_task", "Can remove a task by setting its status as closed"),
+        ]
+```

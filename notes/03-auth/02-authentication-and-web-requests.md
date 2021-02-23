@@ -98,3 +98,14 @@ of codenames.
 
 By default, the `AccessPermission` will *not* blindly redirect to the
 login page if the user is already logged in.
+
+## Authentication Data In Templates
+
+If you create a `RequestContext` in order to render a template, you will
+have some context automatically provided:
+
+* The `user` will be, by default, provided in the context for templates.
+  * This is done by `django.contrib.auth.context_processors.auth`.
+  * It is by default enabled.
+* Similarly there is a `perm` object provided. You can write
+  `perm.app.codename`, a boolean. Or, `"app.codename" in perm`.
