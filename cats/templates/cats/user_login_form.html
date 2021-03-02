@@ -1,0 +1,18 @@
+<h1>Please Log In!</h1>
+
+<form action="{% url "cats:login" %}" method="POST">
+  <!-- The CSRF token input element is embedded here -->
+  {% csrf_token %}
+
+  <label>
+    Username
+    <input type="text" name="username" value="{{ username }}">
+  </label>
+
+  <label>
+    Password
+    <input type="password" name="password" value="{{ password }}">
+  </label>
+
+  <input type="submit" value="Log In!">
+</form>

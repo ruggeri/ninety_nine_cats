@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 class ToysQuerySet(models.QuerySet):
@@ -16,12 +17,20 @@ class Cat(models.Model):
         )
     ]
 
+    permissions = [("say_hello_cat", "Say hello to the cat")]
+
   name = models.CharField(max_length=255)
   age = models.IntegerField()
   view_count = models.IntegerField(default=0)
 
   def __str__(self):
     return self.name
+
+  def say_hello(self, user: User):
+    if not user.has_perm("say_hello_cat"):
+      raise Exception(f"{user} is not allowed to say hello to cats")
+
+    print(f"{user} says hello to {self}")
 
 class Toy(models.Model):
   objects = ToysQuerySet.as_manager()
