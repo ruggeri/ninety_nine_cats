@@ -11,8 +11,12 @@ class CatSerializer(ModelSerializer):
     fields = ["id", "age", "view_count"]
 
 # `rest_framework.APIView` is mostly just a subclass of
-# `django.generic.View`. But it is passed `rest_framework.Request`
-# objects, which are a little nicer.
+# `django.generic.View`. It dispatches by method name similarly. But
+# `APIView` is passed `rest_framework.views.Request` objects, which are
+# a little nicer.
+#
+# And it can happily be returned `rest_framework.views.Response`
+# objects. This is how DRF can do automagic content negotiation for us.
 
 class CatsListView(APIView):
   def get(self, request):

@@ -70,7 +70,7 @@ class CatsViewSet(viewsets.ViewSet):
     #   )
 
   # def detail(self, request):
-  #   # shoudl I also have the say hello permission?
+  #   # should I also have the say hello permission?
 
 def cats_new(request):
   cat = Cat()
