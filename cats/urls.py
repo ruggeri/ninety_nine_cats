@@ -54,16 +54,30 @@ app_name = 'cats'
 #     ),
 # ]
 
-from . import views_04_list_and_detail_views
+# from . import views_04_list_and_detail_views
+# urlpatterns = [
+#     path(
+#         "cats/",
+#         views_04_list_and_detail_views.CatsListView.as_view(),
+#         name="cats_list"
+#     ),
+#     path(
+#         "cats/<int:cat_id>",
+#         views_04_list_and_detail_views.CatsDetailView.as_view(),
+#         name="cats_detail"
+#     ),
+# ]
+
+from . import views_05_drf_api_views
 urlpatterns = [
     path(
         "cats/",
-        views_04_list_and_detail_views.CatsListView.as_view(),
+        views_05_drf_api_views.CatsListView.as_view(),
         name="cats_list"
     ),
     path(
         "cats/<int:cat_id>",
-        views_04_list_and_detail_views.CatsDetailView.as_view(),
+        views_05_drf_api_views.CatsDetailView.as_view(),
         name="cats_detail"
     ),
 ]

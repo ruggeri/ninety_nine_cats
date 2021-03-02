@@ -1,6 +1,9 @@
 from django.views import generic
 from .models import Cat
 
+# The `ListView` and `DetailView` are helpful view classes for the most
+# typical REST type endpoints.
+
 class CatsListView(generic.ListView):
   model = Cat
   template_name = "cats/cats_list_01.html"

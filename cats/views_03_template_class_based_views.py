@@ -4,7 +4,7 @@ from django.views import generic
 from .models import Cat
 
 # The `generic.TemplateView` class is not clearly superior to using
-# `render` directly. But it maybe requires one fewer import. Plus, it is
+# `render` directly. Perhaps it requires one fewer import. Plus, it is
 # the same idiom as `ListView` and `DetailView` which we will see
 # shortly.
 

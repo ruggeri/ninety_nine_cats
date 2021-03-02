@@ -9,6 +9,9 @@ from .models import Cat
 # based on HTTP method. This allows you to separate code for, for
 # instance, GET and POST requests.
 #
+# In `urls.py`, you will see that we need to call `#as_view` on this
+# class.
+#
 # `generic.View` is used as a parent class for other class-based views
 # that add more functionality.
 

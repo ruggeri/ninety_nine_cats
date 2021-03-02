@@ -3,6 +3,8 @@ from django.shortcuts import get_object_or_404, render
 from django.template import loader
 from .models import Cat
 
+# In this example, we will render some templates.
+
 # This shows the most basic way with using `django.template.loader`
 # directly.
 
