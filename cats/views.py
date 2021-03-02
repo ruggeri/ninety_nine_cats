@@ -69,6 +69,9 @@ class CatsViewSet(viewsets.ViewSet):
     #       "you're not allowed to say hello to cats", status=403
     #   )
 
+  # def detail(self, request):
+  #   # shoudl I also have the say hello permission?
+
 def cats_new(request):
   cat = Cat()
   context = {'cat': cat}

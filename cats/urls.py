@@ -1,19 +1,69 @@
 from django.urls import path
-from . import views
 
 app_name = 'cats'
+
+# from . import views_00_simple_view_functions
+# urlpatterns = [
+#     path(
+#         "cats/",
+#         views_00_simple_view_functions.cats_list,
+#         name="cats_list"
+#     ),
+#     path(
+#         "cats/<int:cat_id>",
+#         views_00_simple_view_functions.cats_detail,
+#         name="cats_detail"
+#     ),
+# ]
+
+# from . import views_01_template_view_functions
+# urlpatterns = [
+#     path("cats/", views_01_template_view_functions.cats_list, name="cats_list"),
+#     path(
+#         "cats/<int:cat_id>",
+#         views_01_template_view_functions.cats_detail,
+#         name="cats_detail"
+#     ),
+# ]
+
+# from . import views_02_simple_class_based_views
+# urlpatterns = [
+#     path(
+#         "cats/",
+#         views_02_simple_class_based_views.CatsListView.as_view(),
+#         name="cats_list"
+#     ),
+#     path(
+#         "cats/<int:cat_id>",
+#         views_02_simple_class_based_views.CatsDetailView.as_view(),
+#         name="cats_list"
+#     ),
+# ]
+
+# from . import views_03_template_class_based_views
+# urlpatterns = [
+#     path(
+#         "cats/",
+#         views_03_template_class_based_views.CatsListView.as_view(),
+#         name="cats_list"
+#     ),
+#     path(
+#         "cats/<int:cat_id>",
+#         views_03_template_class_based_views.CatsDetailView.as_view(),
+#         name="cats_detail"
+#     ),
+# ]
+
+from . import views_04_list_and_detail_views
 urlpatterns = [
-    # path('', views.CatsListView.as_view(), name="list"),
-    # path('new/', views.cats_new, name="new"),
-    # path('create/', views.cats_create, name="create"),
-    # path(
-    #     '<int:cat_id>/', views.CatsDetailView.as_view(), name="detail"
-    # ),
     path(
-        'cats/',
-        views.CatsViewSet.as_view({"get": "list"}),
-        name="list"
+        "cats/",
+        views_04_list_and_detail_views.CatsListView.as_view(),
+        name="cats_list"
     ),
-    path('login/', views.login, name="login"),
-    path("logout/", views.logout, name="logout")
+    path(
+        "cats/<int:cat_id>",
+        views_04_list_and_detail_views.CatsDetailView.as_view(),
+        name="cats_detail"
+    ),
 ]
