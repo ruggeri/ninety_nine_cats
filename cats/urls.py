@@ -15,7 +15,7 @@ url_module_names = [
 ]
 
 urls_module = importlib.import_module(
-    "cats.demos.auth.01_auth_with_handroll_login_and_logout_views.urls",
+    "cats.demos.auth.00_auth_with_default_views.urls",
 )
 
 # mypy: ignore-errors

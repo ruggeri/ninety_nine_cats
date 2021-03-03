@@ -13,7 +13,7 @@ class LoginView(auth_views.LoginView):
   def get_success_url(self):
     # Use the redirect URL in the query params if it exists.
     url = self.get_redirect_url()
-    if url is not None:
+    if url:
       return url
 
     # Else send them to the default profile page.
