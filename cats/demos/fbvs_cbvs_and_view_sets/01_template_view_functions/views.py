@@ -1,7 +1,7 @@
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.template import loader
-from .models import Cat
+from cats.models import Cat
 
 # In this example, we will render some templates.
 

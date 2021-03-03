@@ -1,7 +1,7 @@
 from django.core import serializers
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404
-from .models import Cat
+from cats.models import Cat
 
 # This shows how to use basic django view functions. This is the
 # lowest-level way to do things.

@@ -1,5 +1,5 @@
 from django.views import generic
-from .models import Cat
+from cats.models import Cat
 
 # The `ListView` and `DetailView` are helpful view classes for the most
 # typical REST type endpoints.

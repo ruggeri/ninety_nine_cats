@@ -1,6 +1,6 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.serializers import ModelSerializer
-from .models import Cat
+from cats.models import Cat
 
 # We'll learn more about serializers another time. For now, we can just
 # know this handles serialization to JSON.

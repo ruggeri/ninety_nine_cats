@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 from rest_framework.viewsets import ReadOnlyModelViewSet
-from .models import Cat
+from cats.models import Cat
 
 # We'll learn more about serializers another time. For now, we can just
 # know this handles serialization to JSON.

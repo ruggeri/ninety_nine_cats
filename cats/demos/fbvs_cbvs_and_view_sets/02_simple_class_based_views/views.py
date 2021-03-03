@@ -2,7 +2,7 @@ from django.core import serializers
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views import generic
-from .models import Cat
+from cats.models import Cat
 
 # `generic.View` is a starting point for class-based views. It defines a
 # `#dispatch` method that will dispatch to the appropriate view method

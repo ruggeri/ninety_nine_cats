@@ -1,7 +1,7 @@
 from django.http import HttpRequest
 from django.shortcuts import get_object_or_404
 from django.views import generic
-from .models import Cat
+from cats.models import Cat
 
 # The `generic.TemplateView` class is not clearly superior to using
 # `render` directly. Perhaps it requires one fewer import. Plus, it is
