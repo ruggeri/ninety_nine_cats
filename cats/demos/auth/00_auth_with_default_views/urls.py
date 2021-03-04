@@ -21,7 +21,7 @@ urlpatterns = [
 
     # Route to show the user's profile name.
     path(
-        "profile/",
+        "accounts/profile/",
         views.profile_detail,
         name="profile-detail",
     )
