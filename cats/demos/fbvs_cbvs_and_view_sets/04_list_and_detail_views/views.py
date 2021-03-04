@@ -45,8 +45,8 @@ class CatsDetailView(generic.DetailView):
   # Here I add some extra functionality around getting the object.
   # Probably bad practice though to do this here. Should probably
   # override the get method myself...
-  def get_object(self, *args, **kwargs):
-    cat: Cat = super().get_object(*args, **kwargs)
+  def get_object(self, queryset=None):
+    cat: Cat = super().get_object(queryset)
     cat.view_count += 1
     cat.save()
     return cat
